@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -20,26 +17,61 @@ public class PlayerManager : MonoBehaviour
     
     //**    ---Work Variables---    **//
     private States _currentState;
+    [SerializeField] private float rcBoxMaxDistance;
+    [SerializeField] private Vector3 rcBoxSize;
 
-    //**    ---Functions---    **//
+    //**    ---Script Functions---    **//
     public bool CanWalk() {
         return _currentState is States.IDLE or States.WALKING;
     }
     
     public bool CanJump() {
-        //codigo para determinar si esta en el suelo
-        bool OntheFloor = true;
-        if (CanWalk() && OntheFloor) {
+        bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, LayerMask.GetMask("Terrain"));
+        if (CanWalk() && grounded) {
             return true;
         }
         return false;
     }
 
+    public void SwitchState(States newState) {
+        if (_currentState == newState) {
+            return;
+        }
+
+        switch (newState) {
+            case States.DISABLED:
+            case States.IDLE:
+                IdleAnim();
+                break;
+            case States.WALKING:
+                WalkAnim();
+                break;
+            case States.JUMPING:
+                JumpAnim();
+                break;
+        }
+        _currentState = newState;
+    }
+    
     public void WalkAnim() {
         
     }
     
     public void JumpAnim() {
         
+    }
+    
+    public void IdleAnim() {
+        
+    }
+
+    //Debug
+    public void OnDrawGizmos() {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawCube(transform.position - transform.up * rcBoxMaxDistance, rcBoxSize*2);
+    }
+
+    private void Start() {
+        _currentState = States.IDLE;
     }
 }
