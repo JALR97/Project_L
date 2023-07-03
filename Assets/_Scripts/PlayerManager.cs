@@ -13,7 +13,9 @@ public class PlayerManager : MonoBehaviour
     
     //**    ---Components---    **//
     // [SerializeField] private PlayerController _playerController;
+    [SerializeField] private Interactor _interactor;
     [SerializeField] private GameObject player;
+    [SerializeField] private LayerMask terrain;
     
     //**    ---Work Variables---    **//
     private States _currentState;
@@ -26,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     }
     
     public bool CanJump() {
-        bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, LayerMask.GetMask("Terrain"));
+        bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
         if (CanWalk() && grounded) {
             return true;
         }
@@ -64,14 +66,21 @@ public class PlayerManager : MonoBehaviour
     public void IdleAnim() {
         
     }
-
-    //Debug
-    public void OnDrawGizmos() {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawCube(transform.position - transform.up * rcBoxMaxDistance, rcBoxSize*2);
+    
+    private void Update() {
+        //PRUEBA -- Deberia moverse a PlayerController
+        if (Input.GetKeyDown(KeyCode.E)) {
+            _interactor.Interact();
+        }
     }
 
     private void Start() {
         _currentState = States.IDLE;
+    }
+    
+    //Debug
+    public void OnDrawGizmos() {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawCube(transform.position - transform.up * rcBoxMaxDistance, rcBoxSize*2);
     }
 }
