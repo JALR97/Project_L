@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 8507698416925607735}
   - component: {fileID: 8933517302767292764}
   - component: {fileID: 5172802395089231368}
+  - component: {fileID: 3741632514462517343}
   m_Layer: 5
   m_Name: PanelCables
   m_TagString: Untagged
@@ -183,6 +184,28 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3741632514462517343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242770911036584042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5739db0158d8ca047b46183eca98f101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cableColors:
+  - {r: 0.83137256, g: 0.18431373, b: 0.18431373, a: 1}
+  - {r: 0.33333334, g: 0.83137256, b: 0.18431373, a: 1}
+  - {r: 0.18431373, g: 0.73333335, b: 0.83137256, a: 1}
+  - {r: 0.67058825, g: 0.18431373, b: 0.83137256, a: 1}
+  plugs:
+  - {fileID: 994816200576694686}
+  - {fileID: 5527429913069876226}
+  - {fileID: 4918914806710775039}
+  - {fileID: 7746787179733861969}
 --- !u!1 &3462749347963948008
 GameObject:
   m_ObjectHideFlags: 0
