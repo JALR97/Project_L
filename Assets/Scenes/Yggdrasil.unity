@@ -1021,6 +1021,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entities
       objectReference: {fileID: 0}
+    - target: {fileID: 8500899070131086358, guid: c32cace5be2f6eb4186d404acaba869d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500899070131086358, guid: c32cace5be2f6eb4186d404acaba869d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1081,7 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedPlayer: 100
   turnSmoothTime: 10
-  camera: {fileID: 5586747834328211164}
+  thirdPersonCamera: {fileID: 5586747834328211164}
 --- !u!1001 &8097946692644779804
 PrefabInstance:
   m_ObjectHideFlags: 0

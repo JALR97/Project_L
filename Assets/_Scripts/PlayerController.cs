@@ -8,11 +8,10 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity = 1.0f;
     Rigidbody rb;
     Vector3 moveDirection;
 
-    public Transform camera;
+    public Transform thirdPersonCamera;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,21 +34,20 @@ public class PlayerController : MonoBehaviour
         if( moveDirection.magnitude >= 0.1f)
         {
             
-            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + camera.eulerAngles.y ;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + thirdPersonCamera.eulerAngles.y ;            
             
 
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             Vector3 move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            float a = 1f;
-            if (Input.GetKeyDown(KeyCode.S))
-                a = -a;
 
-            rb.velocity = move.normalized * speedPlayer* Time.deltaTime;
+            Vector3 cameraForward = thirdPersonCamera.transform.forward;
+            cameraForward.y = 0f;  // Mantener el movimiento en el plano horizontal
+            cameraForward.Normalize();
+
+            Vector3 movement = (horizontalInput * thirdPersonCamera.transform.right + verticalInput * cameraForward).normalized;
+            movement.y = 0f;
+            rb.velocity = movement * speedPlayer* Time.deltaTime;
         }
 
     }
