@@ -40,7 +40,9 @@ public class PlayerController : MonoBehaviour
 
             Vector3 move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            rb.AddForce(move.normalized  * speedPlayer * Time.deltaTime, ForceMode.Force);
+            
+
+            rb.AddForce(move * speedPlayer * Time.deltaTime, ForceMode.Force);
         }
 
     }

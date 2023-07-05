@@ -746,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 2158046190082372641, guid: 587661f09fe16e543b3a697341db0f4f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27677056
+      value: 0.27677053
       objectReference: {fileID: 0}
     - target: {fileID: 2158046190082372641, guid: 587661f09fe16e543b3a697341db0f4f,
         type: 3}
@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 2158046190082372641, guid: 587661f09fe16e543b3a697341db0f4f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.19821054
+      value: -0.19821055
       objectReference: {fileID: 0}
     - target: {fileID: 3341410127068613483, guid: 587661f09fe16e543b3a697341db0f4f,
         type: 3}
@@ -1079,8 +1079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e755daa411fc44e8b4d83f5cdb87f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedPlayer: 1000
-  turnSmoothTime: 0.1
+  speedPlayer: 10
+  turnSmoothTime: 10
   camera: {fileID: 5586747834328211164}
 --- !u!1001 &8097946692644779804
 PrefabInstance:
