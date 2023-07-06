@@ -79,8 +79,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.2385, y: 5.5163}
-  m_SizeDelta: {x: -357.1823, y: -184.7971}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1753689751448415072
 CanvasRenderer:
@@ -138,6 +138,7 @@ MonoBehaviour:
   - {fileID: 1194629724372044619}
   - {fileID: 1227438382302484854}
   _panel1: {fileID: 5278372285887334194}
+  pzm: {fileID: 0}
 --- !u!1 &6376711994742418743
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +872,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3741632514462517343, guid: 922e3d81c6a38f547b913797cf985c7c,
+        type: 3}
+      propertyPath: PuzzleRoot
+      value: 
+      objectReference: {fileID: 6731403087820760793}
     - target: {fileID: 4198747390574318639, guid: 922e3d81c6a38f547b913797cf985c7c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1231,6 +1237,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3741632514462517343, guid: 922e3d81c6a38f547b913797cf985c7c,
+        type: 3}
+      propertyPath: lastPanel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741632514462517343, guid: 922e3d81c6a38f547b913797cf985c7c,
+        type: 3}
+      propertyPath: PuzzleRoot
+      value: 
+      objectReference: {fileID: 6731403087820760793}
     - target: {fileID: 4198747390574318639, guid: 922e3d81c6a38f547b913797cf985c7c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1893,6 +1909,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3741632514462517343, guid: 922e3d81c6a38f547b913797cf985c7c,
+        type: 3}
+      propertyPath: PuzzleRoot
+      value: 
+      objectReference: {fileID: 6731403087820760793}
     - target: {fileID: 4198747390574318639, guid: 922e3d81c6a38f547b913797cf985c7c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2138,6 +2159,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3741632514462517343, guid: 922e3d81c6a38f547b913797cf985c7c,
+        type: 3}
+      propertyPath: PuzzleRoot
+      value: 
+      objectReference: {fileID: 6731403087820760793}
     - target: {fileID: 4198747390574318639, guid: 922e3d81c6a38f547b913797cf985c7c,
         type: 3}
       propertyPath: m_AnchorMax.y

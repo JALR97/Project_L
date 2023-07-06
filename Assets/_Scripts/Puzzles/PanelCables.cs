@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -13,15 +9,12 @@ public class PanelCables : MonoBehaviour
     //  [[ set in editor ]] 
     [SerializeField] private Color[] cableColors;
     [SerializeField] private Image[] plugs;
-    //  [[ set in Start() ]] 
-    
-    
-    //**    ---Variables---    **//
-    //  [[ balance control ]] 
-    
-    
-    //  [[ internal work ]] 
+    [SerializeField] private PuzzleCables PuzzleRoot;
 
+    //**    ---Variables---    **//
+    private int connectedPlugs = 0;
+    [SerializeField] private bool lastPanel;
+    
     //**    ---Properties---    **//
     public List<int> Order { get; } = new List<int>();
 
@@ -30,6 +23,13 @@ public class PanelCables : MonoBehaviour
         for (int i = 0; i < 4; i++) {
             plugs[i].color = cableColors[Order[i]];
             plugs[i].GetComponent<Plug>().id = Order[i];
+        }
+    }
+
+    public void NewConnection() {
+        connectedPlugs += 1;
+        if (connectedPlugs == 4 && lastPanel) {
+            PuzzleRoot.Completed();
         }
     }
     

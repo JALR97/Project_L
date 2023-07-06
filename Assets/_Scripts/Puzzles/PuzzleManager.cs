@@ -16,12 +16,18 @@ public class PuzzleManager : MonoBehaviour
 
     //**    ---Variables---    **//
     private Puzzle _currentPuzzle;
+    private GameObject puzzleGameObject;
     
     //**    ---Functions---    **//
     public void Popup(Puzzle puzzle) {
         gameObject.SetActive(true);
         _currentPuzzle = puzzle;
-        Instantiate(FetchPuzzle(puzzle), puzzleArea);
+        puzzleGameObject = Instantiate(FetchPuzzle(puzzle), puzzleArea);
+        switch (puzzle) {
+            case Puzzle.CABLES:
+                puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
+                break;
+        }
     }
 
     public void Exit() {

@@ -40,6 +40,4 @@ public class Cable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
         _image.raycastTarget = true;
         transform.position = initialPosition;
     }
-
-
 }
