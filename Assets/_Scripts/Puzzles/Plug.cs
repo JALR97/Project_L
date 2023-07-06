@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,7 @@ public class Plug : MonoBehaviour, IDropHandler
     
     //**    ---Variables---    **//
     public int id;
+
     
     //**    ---Properties---    **//
     
@@ -19,7 +21,8 @@ public class Plug : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData) {
         Cable cable = eventData.pointerDrag.GetComponent<Cable>();
         if (cable.id == id) {
-            Debug.Log("Correct cable");
+            cable.Connect(transform.position);
         }
     }
+
 }

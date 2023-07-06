@@ -9,10 +9,16 @@ public class Cable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
     
     //**    ---Variables---    **//
     public int id;
-    
+    private Vector3 initialPosition;
+
     //**    ---Functions---    **//
-    public void SetColor(int colorId) {
-        id = colorId;
+    private void Start() {
+        initialPosition = transform.position;
+    }
+
+    public void Connect(Vector3 newPosition) {
+        transform.position = newPosition;
+        initialPosition = transform.position;
     }
     
     public void OnDrag(PointerEventData eventData) {
@@ -25,6 +31,7 @@ public class Cable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
 
     public void OnEndDrag(PointerEventData eventData) {
         _image.raycastTarget = true;
+        transform.position = initialPosition;
     }
 
 
