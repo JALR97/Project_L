@@ -6,6 +6,8 @@ public class Cable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
 {
     //**    ---Components---    **//
     [SerializeField] private Image _image;
+    [SerializeField] private GameObject wirePrefab;
+    [SerializeField] private Wire wire;
     
     //**    ---Variables---    **//
     public int id;
@@ -16,9 +18,14 @@ public class Cable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
         initialPosition = transform.position;
     }
 
-    public void Connect(Vector3 newPosition) {
+    public void Connect(Vector3 newPosition, RectTransform plug) {
         transform.position = newPosition;
         initialPosition = transform.position;
+        wire.UpdateSize();
+        wire.connected = true;
+        Color tmpColor = wire.color;
+        wire = Instantiate(wirePrefab, wire.transform.parent).GetComponent<Wire>();
+        wire.Setup(plug, transform.GetComponent<RectTransform>(), tmpColor);
     }
     
     public void OnDrag(PointerEventData eventData) {

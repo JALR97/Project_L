@@ -21,7 +21,7 @@ public class Plug : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData) {
         Cable cable = eventData.pointerDrag.GetComponent<Cable>();
         if (cable.id == id) {
-            cable.Connect(transform.position);
+            cable.Connect(transform.position, transform.GetComponent<RectTransform>());
         }
     }
 
