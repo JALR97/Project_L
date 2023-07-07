@@ -13,12 +13,10 @@ public class Interactor : MonoBehaviour {
     //**    ---Functions---    **//
     public void Interact() {
         int numColliders = Physics.OverlapSphereNonAlloc(transform.position, _interactionRadius, _colliders, _interactableMask);
-
         if (numColliders > 0) {
-            Debug.Log("Interactuar con objeto");
+            _colliders[0].gameObject.TryGetComponent(out IInteractable interactable);
+            interactable?.Interact();
         }
-        else
-            Debug.Log("Nothing to interact");
     }
     
     //**    ---Debug---    **//

@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     
     //**    ---Components---    **//
     // [SerializeField] private PlayerController _playerController;
-    [SerializeField] private Interactor _interactor;
     [SerializeField] private GameObject player;
     [SerializeField] private LayerMask terrain;
     
@@ -23,13 +22,31 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Vector3 rcBoxSize;
 
     //**    ---Script Functions---    **//
-    public bool CanWalk() {
+    private void Awake() {
+        GameManager.OnGameStateChange += StateChange;
+    }
+
+    private void OnDestroy() {
+        GameManager.OnGameStateChange -= StateChange;
+    }
+
+    private void StateChange(GameManager.GameState newState) {
+        if (newState != GameManager.GameState.Exploring) {
+            _currentState = States.DISABLED;
+        }
+        else {
+            _currentState = States.IDLE;
+        }
+        
+    }
+    
+    public bool IsActive() {
         return _currentState is States.IDLE or States.WALKING;
     }
     
     public bool CanJump() {
         bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
-        if (CanWalk() && grounded) {
+        if (IsActive() && grounded) {
             return true;
         }
         return false;
@@ -65,13 +82,6 @@ public class PlayerManager : MonoBehaviour
     
     public void IdleAnim() {
         
-    }
-    
-    private void Update() {
-        //PRUEBA -- Deberia moverse a PlayerController
-        if (Input.GetKeyDown(KeyCode.E)) {
-            _interactor.Interact();
-        }
     }
 
     private void Start() {

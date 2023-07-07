@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 // ReSharper disable InconsistentNaming
@@ -22,12 +21,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
     
+    
     //  [[ set in Start() ]] 
 
 
     //**    ---Variables---    **//
     //  [[ balance control ]] 
-
+    
     //  [[ internal work ]] 
     private int completedPuzzles = 0;
     private int totalPuzzles = 1;
@@ -35,16 +35,31 @@ public class GameManager : MonoBehaviour {
     private int totalCapys = 0;
 
     //**    ---Properties---    **//
-
+    
 
     //**    ---Functions---    **//
     private void Awake() {
         Instance = this;
     }
 
+    private void Start() {
+        SwitchState(GameState.Exploring);
+    }
+
+    public void Found() {
+        foundCapys += 1;
+    }
+    public void Solved() {
+        completedPuzzles += 1;
+    }
+
+    public void TriggeredPuzzle(PuzzleManager.Puzzle puzzle) {
+        _puzzleManager.SetPuzzle(puzzle);
+        SwitchState(GameState.Puzzle);
+    }
+    
     public void SwitchState(GameState newState) {
         State = newState;
-
         switch (newState) {
             case GameState.MainMenu:
                 break;
@@ -57,7 +72,6 @@ public class GameManager : MonoBehaviour {
             case GameState.GameOver:
                 break;
         }
-
-        OnGameStateChange(newState);
+        OnGameStateChange?.Invoke(newState);
     }
 }
