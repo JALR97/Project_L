@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Transform thirdPersonCamera;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Interactor _interactor;
     
     //variables de balance
     [SerializeField] private float speed = 20f;
@@ -20,13 +22,19 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     
     //Funciones
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
+            _interactor.Interact();
+        }
+    }
+
     private void FixedUpdate()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         
-        if (moveDirection.magnitude > 0 && playerManager.CanWalk()) {
+        if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
         }
     }

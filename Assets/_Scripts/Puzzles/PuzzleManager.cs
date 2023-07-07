@@ -19,8 +19,24 @@ public class PuzzleManager : MonoBehaviour
     private GameObject puzzleGameObject;
     
     //**    ---Functions---    **//
+    private void Awake() {
+        GameManager.OnGameStateChange += StateChange;
+        gameObject.SetActive(false);
+    }
+    
+    private void OnDestroy() {
+        GameManager.OnGameStateChange -= StateChange;
+    }
+
+    private void StateChange(GameManager.GameState newState) {
+        if (newState == GameManager.GameState.Puzzle) {
+            Popup(_currentPuzzle);
+        }
+    }
+
     public void Popup(Puzzle puzzle) {
         gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
         _currentPuzzle = puzzle;
         puzzleGameObject = Instantiate(FetchPuzzle(puzzle), puzzleArea);
         switch (puzzle) {
@@ -33,11 +49,16 @@ public class PuzzleManager : MonoBehaviour
     public void Exit() {
         Destroy(puzzleArea.GetChild(0).gameObject);
         gameObject.SetActive(false);
+        GameManager.Instance.SwitchState(GameManager.GameState.Exploring);
     }
 
     public void Completed() {
-        //Message game manager, puzzle was completed
+        GameManager.Instance.Solved();
         Exit();
+    }
+
+    public void SetPuzzle(Puzzle puzzle) {
+        _currentPuzzle = puzzle;
     }
 
     private GameObject FetchPuzzle(Puzzle puzzleId) {

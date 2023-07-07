@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d0768eabf700e489eb2864a3992157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactor: {fileID: 1637634863587775577}
   player: {fileID: 3491764011759078262}
   terrain:
     serializedVersion: 2
@@ -145,6 +144,7 @@ MonoBehaviour:
   playerManager: {fileID: 3045171960839459097}
   thirdPersonCamera: {fileID: 0}
   rb: {fileID: 4625916179625461849}
+  _interactor: {fileID: 1637634863587775577}
   speed: 150
 --- !u!54 &4625916179625461849
 Rigidbody:
