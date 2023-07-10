@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     
     //Funciones
+    private void Start() {
+        thirdPersonCamera = GameObject.FindGameObjectWithTag("TPS").transform;
+    }
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
