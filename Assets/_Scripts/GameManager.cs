@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
+    public GameState PrevState;
     public GameState State;
 
     public static event Action<GameState> OnGameStateChange; 
@@ -38,6 +39,22 @@ public class GameManager : MonoBehaviour {
     
 
     //**    ---Functions---    **//
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Instance.State is GameState.Exploring or GameState.Puzzle) {
+                PrevState = Instance.State;
+                Instance.State = GameState.Paused;
+                Time.timeScale = 0;
+                pauseUI.SetActive(true);
+            }
+            else if (Instance.State is GameState.Paused) {
+                Time.timeScale = 1;
+                Instance.State = PrevState;
+                pauseUI.SetActive(false);
+            }
+        }
+    }
+
     private void Awake() {
         Instance = this;
     }
