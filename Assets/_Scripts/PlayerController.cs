@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     
     //Componentes
     [SerializeField] private PlayerManager playerManager;
-    [SerializeField] private Transform thirdPersonCamera;
+    [SerializeField] private Transform mainCameraForTPS;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Interactor _interactor;
     
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     
     //Funciones
     private void Start() {
-        thirdPersonCamera = GameObject.FindGameObjectWithTag("TPS").transform;
+        mainCameraForTPS = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
@@ -42,17 +42,17 @@ public class PlayerController : MonoBehaviour
         }
     }
     void MovePlayer() {
-        float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + thirdPersonCamera.eulerAngles.y ;            
+        float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + mainCameraForTPS.eulerAngles.y ;            
             
         transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
         Vector3 move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        Vector3 cameraForward = thirdPersonCamera.transform.forward;
+        Vector3 cameraForward = mainCameraForTPS.transform.forward;
         cameraForward.y = 0f;  // Mantener el movimiento en el plano horizontal
         cameraForward.Normalize();
 
-        Vector3 movement = (horizontalInput * thirdPersonCamera.transform.right + verticalInput * cameraForward).normalized;
+        Vector3 movement = (horizontalInput * mainCameraForTPS.transform.right + verticalInput * cameraForward).normalized;
         movement.y = 0f;
         rb.velocity = movement * (speed * Time.deltaTime);
     }
