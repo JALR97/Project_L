@@ -15,12 +15,12 @@ public class PlayerController : MonoBehaviour
     
     //variables de balance
     [SerializeField] private float speed = 20f;
-    
+    [SerializeField] private float jumpForce = 20f;
     //variables de trabajo
     private Vector3 moveDirection;
     private float horizontalInput;
     private float verticalInput;
-    
+    private bool wantJump = false;
     //Funciones
     private void Start() {
         mainCameraForTPS = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+            wantJump = true;
+        
     }
 
     private void FixedUpdate()
@@ -36,17 +39,32 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        
+        if ( wantJump && playerManager.CanJump() && playerManager.IsActive())
+        {
+            Jump();
+        }
+        wantJump = false;
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
         }
+        
+
     }
     void MovePlayer() {
-        float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + mainCameraForTPS.eulerAngles.y ;            
-            
+        float targetAngle;
+        Debug.Log(moveDirection.x + " " +  moveDirection.z);
+        if (moveDirection.x != 0 && moveDirection.y != 0)
+        {
+            targetAngle = mainCameraForTPS.eulerAngles.y;
+
+        }
+        else
+        {
+            targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + mainCameraForTPS.eulerAngles.y;
+
+        }
         transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-        Vector3 move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
         Vector3 cameraForward = mainCameraForTPS.transform.forward;
         cameraForward.y = 0f;  // Mantener el movimiento en el plano horizontal
@@ -54,6 +72,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = (horizontalInput * mainCameraForTPS.transform.right + verticalInput * cameraForward).normalized;
         movement.y = 0f;
-        rb.velocity = movement * (speed * Time.deltaTime);
+        rb.AddForce(movement * speed * Time.deltaTime, ForceMode.Force);
+    }
+    void Jump()
+    {
+
+        //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 }
