@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     void MovePlayer() {
         float targetAngle;
-        Debug.Log(moveDirection.x + " " +  moveDirection.z);
+
         if (moveDirection.x != 0 && moveDirection.y != 0)
         {
             targetAngle = mainCameraForTPS.eulerAngles.y;
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
 
-        //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 }
