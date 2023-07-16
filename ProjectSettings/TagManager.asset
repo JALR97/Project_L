@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TPS
+  - UItooltip
   layers:
   - Default
   - TransparentFX
