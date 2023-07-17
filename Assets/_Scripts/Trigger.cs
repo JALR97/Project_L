@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Trigger : MonoBehaviour, IInteractable
 {
     [SerializeField] private enum Type {
         CABLES,
-        CASA
+        CASA,
+        Yggdrasil
     }
     //**    ---Components---    **//
     [SerializeField] private Type _type;
@@ -30,7 +32,13 @@ public class Trigger : MonoBehaviour, IInteractable
         }
         switch (_type) {
             case Type.CASA:
-                //Cambiar la escena a la casa.
+                SceneManager.LoadScene(3);
+                break;
+        }
+        switch (_type)
+        {
+            case Type.Yggdrasil:
+                SceneManager.LoadScene(0);
                 break;
         }
     }
