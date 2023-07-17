@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     private float horizontalInput;
     private float verticalInput;
-    private bool wantJump = false;
     //Funciones
     private void Start() {
         mainCameraForTPS = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -29,8 +28,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-            wantJump = true;
+        
         
     }
 
@@ -39,16 +37,11 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        if ( wantJump && playerManager.CanJump() && playerManager.IsActive())
-        {
-            Jump();
-        }
-        wantJump = false;
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
         }
-        
-
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump();
     }
     void MovePlayer() {
         float targetAngle;
@@ -72,12 +65,15 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = (horizontalInput * mainCameraForTPS.transform.right + verticalInput * cameraForward).normalized;
         movement.y = 0f;
-        rb.AddForce(movement * speed * Time.deltaTime, ForceMode.Force);
+        rb.AddForce(movement * (speed * Time.deltaTime), ForceMode.Force);
     }
-    void Jump()
-    {
-
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    
+    void Jump() {
+        Debug.Log("Inside jumpt");
+        if (playerManager.CanJump()) {
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            //playerManager.SwitchState(PlayerManager.States.JUMPING);
+        }
     }
 }

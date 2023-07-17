@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     //**    ---Script Functions---    **//
     private void Awake() {
+        _currentState = States.IDLE;
         GameManager.OnGameStateChange += StateChange;
     }
 
@@ -46,7 +47,7 @@ public class PlayerManager : MonoBehaviour
     
     public bool CanJump() {
         bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
-        if (IsActive() && grounded) {
+        if (_currentState != States.JUMPING && IsActive() && grounded) {
             return true;
         }
         return false;
@@ -66,6 +67,9 @@ public class PlayerManager : MonoBehaviour
                 WalkAnim();
                 break;
             case States.JUMPING:
+                //Cooldown for the jump.
+                
+                SwitchState(States.IDLE);
                 JumpAnim();
                 break;
         }
