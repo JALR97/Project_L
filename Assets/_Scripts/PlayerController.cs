@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
         }
-        
-        
+        if (Input.GetKeyDown(KeyCode.Space) && playerManager.CanJump())
+            Jump();
     }
 
     private void FixedUpdate()
@@ -39,10 +39,15 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
+            if (playerManager.IsGrounded()) {
+                playerManager.SwitchState(PlayerManager.States.WALKING);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-            Jump();
+        else if(playerManager.IsActive() && playerManager.IsGrounded()){
+            playerManager.SwitchState(PlayerManager.States.IDLE);
+        }
     }
+    
     void MovePlayer() {
         float targetAngle;
 
@@ -69,11 +74,8 @@ public class PlayerController : MonoBehaviour
     }
     
     void Jump() {
-        Debug.Log("Inside jumpt");
-        if (playerManager.CanJump()) {
-            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            //playerManager.SwitchState(PlayerManager.States.JUMPING);
-        }
+        playerManager.SwitchState(PlayerManager.States.JUMPING);
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
     }
 }

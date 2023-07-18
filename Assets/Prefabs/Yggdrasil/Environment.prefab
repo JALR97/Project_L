@@ -683,6 +683,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: T_HintInteractuar
       objectReference: {fileID: 0}
+    - target: {fileID: 8952655427171998681, guid: f95ed1b2156802047b63fc637bfc4a0b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5569471862954156163, guid: f95ed1b2156802047b63fc637bfc4a0b, type: 3}
     - {fileID: 4928622196779289858, guid: f95ed1b2156802047b63fc637bfc4a0b, type: 3}
@@ -753,6 +758,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4951777485093646347}
     m_Modifications:
+    - target: {fileID: 5569471862954156163, guid: f95ed1b2156802047b63fc637bfc4a0b,
+        type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7057646052314335297, guid: f95ed1b2156802047b63fc637bfc4a0b,
         type: 3}
       propertyPath: m_RootOrder
