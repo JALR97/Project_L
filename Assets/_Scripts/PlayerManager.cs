@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
     }
     
     public bool IsActive() {
-        return _currentState is States.IDLE or States.WALKING;
+        return _currentState != States.DISABLED;
     }
 
     public bool IsGrounded() {
@@ -80,18 +80,21 @@ public class PlayerManager : MonoBehaviour
     }
     
     public void WalkAnim() {
-        Debug.Log("walk anim");
-        anim.CrossFade("walk", 0.5f, 0);
+        if (_currentState == States.JUMPING) {
+            return;
+        }
+        anim.CrossFade("walk", 0.2f, 0);
     }
     
     public void JumpAnim() {
-        Debug.Log("jump anim");
         anim.CrossFade("jump", 0, 0);
     }
     
     public void IdleAnim() {
-        Debug.Log("Idle anim");
-        anim.CrossFade("Idle", 0.5f, 0);
+        if (_currentState == States.JUMPING) {
+            return;
+        }
+        anim.CrossFade("Idle", 0.2f, 0);
     }
 
     private void Start() {
@@ -109,6 +112,7 @@ public class PlayerManager : MonoBehaviour
         }
         Debug.Log("Back on ground");
         SwitchState(States.IDLE);
+        IdleAnim();
     }
     
     //Debug

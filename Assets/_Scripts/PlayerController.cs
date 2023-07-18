@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
         }
-        
-        
+        if (Input.GetKeyDown(KeyCode.Space) && playerManager.CanJump())
+            Jump();
     }
 
     private void FixedUpdate()
@@ -39,14 +39,15 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
-            playerManager.SwitchState(PlayerManager.States.WALKING);
+            if (playerManager.IsGrounded()) {
+                playerManager.SwitchState(PlayerManager.States.WALKING);
+            }
         }
-        else if(playerManager.IsActive()){
+        else if(playerManager.IsActive() && playerManager.IsGrounded()){
             playerManager.SwitchState(PlayerManager.States.IDLE);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && playerManager.CanJump())
-            Jump();
     }
+    
     void MovePlayer() {
         float targetAngle;
 
