@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     //**    ---Components---    **//
     // [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject player;
+    [SerializeField] private Animator anim;
     [SerializeField] private LayerMask terrain;
     
     //**    ---Work Variables---    **//
@@ -44,10 +46,13 @@ public class PlayerManager : MonoBehaviour
     public bool IsActive() {
         return _currentState is States.IDLE or States.WALKING;
     }
+
+    public bool IsGrounded() {
+        return Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
+    }
     
     public bool CanJump() {
-        bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
-        if (_currentState != States.JUMPING && IsActive() && grounded) {
+        if (_currentState != States.JUMPING && IsActive() && IsGrounded()) {
             return true;
         }
         return false;
@@ -67,29 +72,43 @@ public class PlayerManager : MonoBehaviour
                 WalkAnim();
                 break;
             case States.JUMPING:
-                //Cooldown for the jump.
-                
-                SwitchState(States.IDLE);
                 JumpAnim();
+                StartCoroutine(JumpCooldown());
                 break;
         }
         _currentState = newState;
     }
     
     public void WalkAnim() {
-        
+        Debug.Log("walk anim");
+        anim.CrossFade("walk", 0.5f, 0);
     }
     
     public void JumpAnim() {
-        
+        Debug.Log("jump anim");
+        anim.CrossFade("jump", 0, 0);
     }
     
     public void IdleAnim() {
-        
+        Debug.Log("Idle anim");
+        anim.CrossFade("Idle", 0.5f, 0);
     }
 
     private void Start() {
         _currentState = States.IDLE;
+    }
+
+    private IEnumerator JumpCooldown() {
+        float timerS = Time.time;
+        while (Time.time - timerS <= 0.5f) {
+            yield return null;
+        }
+        Debug.Log("Wait for ground");
+        while (!IsGrounded()) {
+            yield return null;
+        }
+        Debug.Log("Back on ground");
+        SwitchState(States.IDLE);
     }
     
     //Debug

@@ -45,11 +45,6 @@ PrefabInstance:
       propertyPath: speed
       value: 1500
       objectReference: {fileID: 0}
-    - target: {fileID: 1391619404332770869, guid: 5cbc4c6d63f081946bad51d1a556edb8,
-        type: 3}
-      propertyPath: jumpForce
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2700183090902704247, guid: 5cbc4c6d63f081946bad51d1a556edb8,
         type: 3}
       propertyPath: m_RootOrder

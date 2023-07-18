@@ -39,8 +39,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
+            playerManager.SwitchState(PlayerManager.States.WALKING);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if(playerManager.IsActive()){
+            playerManager.SwitchState(PlayerManager.States.IDLE);
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && playerManager.CanJump())
             Jump();
     }
     void MovePlayer() {
@@ -69,11 +73,8 @@ public class PlayerController : MonoBehaviour
     }
     
     void Jump() {
-        Debug.Log("Inside jumpt");
-        if (playerManager.CanJump()) {
-            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            //playerManager.SwitchState(PlayerManager.States.JUMPING);
-        }
+        playerManager.SwitchState(PlayerManager.States.JUMPING);
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
     }
 }
