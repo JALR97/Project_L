@@ -31,10 +31,12 @@ public class Trigger : MonoBehaviour, IInteractable
                 GameManager.Instance.TriggeredPuzzle(PuzzleManager.Puzzle.CABLES);
                 break;
             case Type.CASA:
+                GameManager.Instance.hint_UI.SetActive(false);
                 GameManager.Instance.SceneChange("casa");
                 break;
             case Type.Yggdrasil:
-                SceneManager.LoadScene(0);
+                GameManager.Instance.hint_UI.SetActive(false);
+                GameManager.Instance.SceneChange("yggdrasil");
                 break;
             case Type.DAD:
                 GameManager.Instance.GameOver();
