@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,9 +35,10 @@ public class GameManager : MonoBehaviour {
     //  [[ balance control ]] 
     
     //  [[ internal work ]] 
+    private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
     private int completedPuzzles = 0;
     private int totalPuzzles = 1;
-    private int foundCapys = 0;
+    //private int foundCapys = 0;
     private int totalCapys = 0;
 
     //**    ---Properties---    **//
@@ -76,9 +78,13 @@ public class GameManager : MonoBehaviour {
         SceneChange("menu");
     }
     
-    public void Found() {
-        foundCapys += 1;
+    public void Found(LostCapy.CapyID capy) {
+        foundCapys.Add(capy);
     }
+    public bool isFound(LostCapy.CapyID capy) {
+        return foundCapys.Contains(capy);
+    }
+    
     public void Solved() {
         completedPuzzles += 1;
     }
@@ -108,7 +114,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         if (State != GameState.GameOver) {
-            string newStats = $"Capybaras encontrados: {foundCapys} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);
