@@ -1,7 +1,10 @@
 using System;
 using Cinemachine;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 // ReSharper disable InconsistentNaming
 
 public class GameManager : MonoBehaviour {
@@ -21,6 +24,9 @@ public class GameManager : MonoBehaviour {
     //  [[ set in editor ]] 
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject gameoverUI;
+    
+    public GameObject hint_UI;
     
     
     //  [[ set in Start() ]] 
@@ -56,7 +62,13 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Awake() {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(transform.parent);
+        }
+        else {
+            Destroy(gameObject);
+        }
     }
 
     private void Start() {
@@ -90,5 +102,16 @@ public class GameManager : MonoBehaviour {
                 break;
         }
         OnGameStateChange?.Invoke(newState);
+    }
+
+    public void GameOver() {
+        string newStats = $"Capybaras encontrados: {foundCapys} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
+        gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
+        gameoverUI.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void SceneChange(string casa) {
+        SceneManager.LoadScene(3);
     }
 }

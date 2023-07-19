@@ -17,7 +17,7 @@ public class AreaTrigger : MonoBehaviour {
 
 
     //External References
-    [SerializeField] private GameObject UI;
+    private GameObject UI;
 
     //-----------------//Variables//-----------------//
     //Process variables - private
@@ -31,6 +31,10 @@ public class AreaTrigger : MonoBehaviour {
 
     //-----------------//Functions//-----------------//
     //Built-in
+    private void Start() {
+        UI = GameManager.Instance.hint_UI;
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
             switch (type) {
@@ -50,6 +54,7 @@ public class AreaTrigger : MonoBehaviour {
             }
         }
     }
+
     //Inner process - private
 
 
