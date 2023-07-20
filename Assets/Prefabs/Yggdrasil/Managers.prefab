@@ -1954,6 +1954,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2635264650575741860, guid: 8df95650cecad994495fb11a3271c2ee,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7966947562229363104, guid: 8df95650cecad994495fb11a3271c2ee,
         type: 3}
       propertyPath: m_Pivot.x
