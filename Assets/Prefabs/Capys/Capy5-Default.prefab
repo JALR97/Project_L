@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.175
+      value: 4.033391
       objectReference: {fileID: 0}
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.654
+      value: 3.9203198
       objectReference: {fileID: 0}
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7338c330b1bfd7b498f916573774ab82,
         type: 3}
       propertyPath: m_Name
-      value: capibara protagonista
+      value: Default
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -193,7 +193,7 @@ Animator:
   m_GameObject: {fileID: 8334377519516751517}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 222edd35dc1fd324e9680d4af88cf3f6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0268ddd7290dff743aaed9deda428851, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
