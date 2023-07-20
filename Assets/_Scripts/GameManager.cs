@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,8 +27,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject gameoverUI;
     
     public GameObject hint_UI;
-    
-    
+    private List<int> defaultCapys = new List<int>();
+
     //  [[ set in Start() ]] 
 
 
@@ -78,11 +79,18 @@ public class GameManager : MonoBehaviour {
         SceneChange("menu");
     }
     
-    public void Found(LostCapy.CapyID capy) {
+    public void CapyFound(LostCapy.CapyID capy) {
         foundCapys.Add(capy);
     }
-    public bool isFound(LostCapy.CapyID capy) {
+    public void CapyFound(int capy) {
+        defaultCapys.Add(capy);
+    }
+    
+    public bool hasCapyBeenFound(LostCapy.CapyID capy) {
         return foundCapys.Contains(capy);
+    }
+    public bool hasCapyBeenFound(int capy) {
+        return defaultCapys.Contains(capy);
     }
     
     public void Solved() {
@@ -114,7 +122,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         if (State != GameState.GameOver) {
-            string newStats = $"Capybaras encontrados: {foundCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);

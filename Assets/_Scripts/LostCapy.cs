@@ -17,7 +17,7 @@ public class LostCapy : MonoBehaviour, IInteractable
     
     //**    ---Variables---    **//
     [SerializeField] private CapyID id;
-
+    public int defId;
 
     //**    ---Functions---    **//
     private void Start() {
@@ -25,11 +25,21 @@ public class LostCapy : MonoBehaviour, IInteractable
     }
 
     public void Interact() {
-        if (!GameManager.Instance.isFound(id)) {
+        if (id == CapyID.DEFAULT) {
+            if (!GameManager.Instance.hasCapyBeenFound(defId)) {
+                WaveAnim();
+                //Show message that capy was found
+                //Debug.Log($"capy found: {id}");
+                GameManager.Instance.CapyFound(defId);
+            }
+            else {
+                //Si queremos que los default hagan algo al volver a hablar seria aqui
+            }
+        }else if (!GameManager.Instance.hasCapyBeenFound(id)) {
             WaveAnim();
             //Show message that capy was found
             //Debug.Log($"capy found: {id}");
-            GameManager.Instance.Found(id);
+            GameManager.Instance.CapyFound(id);
         }
         else {
             //Debug.Log($"already found: {id}");
