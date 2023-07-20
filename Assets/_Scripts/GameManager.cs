@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public static event Action<GameState> OnGameStateChange; 
     public enum GameState {
         MainMenu,
+        Credits,
         Exploring,
         Puzzle,
         Paused,
@@ -24,16 +25,19 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
-    
+
+    [SerializeField] private GameObject creditsUI;
+    [SerializeField] private GameObject mainMenuUI;
+
     public GameObject hint_UI;
-    
-    
+
+
     //  [[ set in Start() ]] 
 
 
     //**    ---Variables---    **//
     //  [[ balance control ]] 
-    
+
     //  [[ internal work ]] 
     private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
     private int completedPuzzles = 0;
@@ -42,17 +46,20 @@ public class GameManager : MonoBehaviour {
     private int totalCapys = 0;
 
     //**    ---Properties---    **//
-    
+
 
     //**    ---Functions---    **//
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (Instance.State is GameState.Exploring or GameState.Puzzle) {
+
                 SwitchState(GameState.Paused);
                 Time.timeScale = 0;
                 pauseUI.SetActive(true);
             }
-            else if (Instance.State is GameState.Paused) {
+            else if (Instance.State is GameState.Paused)
+            {
                 Time.timeScale = 1;
                 SwitchState(PrevState);
                 pauseUI.SetActive(false);
@@ -60,19 +67,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(transform.parent);
         }
         else {
+
             Destroy(gameObject);
         }
     }
 
-    private void Start() {
+    private void Start()
+    {
         SwitchState(GameState.Exploring);
     }
+
 
     public void Endgame() {
         SceneChange("menu");
@@ -86,14 +97,16 @@ public class GameManager : MonoBehaviour {
     }
     
     public void Solved() {
+
         completedPuzzles += 1;
     }
 
-    public void TriggeredPuzzle(PuzzleManager.Puzzle puzzle) {
+    public void TriggeredPuzzle(PuzzleManager.Puzzle puzzle)
+    {
         _puzzleManager.SetPuzzle(puzzle);
         SwitchState(GameState.Puzzle);
     }
-    
+
     public void SwitchState(GameState newState) {
         PrevState = State;
         State = newState;
@@ -108,9 +121,12 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.GameOver:
                 break;
+            case GameState.Credits:
+                break;
         }
         OnGameStateChange?.Invoke(newState);
     }
+
 
     public void GameOver() {
         if (State != GameState.GameOver) {
@@ -120,7 +136,9 @@ public class GameManager : MonoBehaviour {
             SwitchState(GameState.GameOver);
             Time.timeScale = 0;
         }
+
         else {
+
             gameoverUI.SetActive(false);
             SwitchState(PrevState);
             Time.timeScale = 1;
@@ -140,4 +158,25 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+    public void ShowCredits()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.Credits;
+        mainMenuUI.SetActive(false);
+        creditsUI.SetActive(true);
+    }
+    public void ShowMainMenu()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.MainMenu;
+        creditsUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
+
 }
