@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     //**    ---Components---    **//
     // [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject player;
+    [SerializeField] private Animator anim;
     [SerializeField] private LayerMask terrain;
     
     //**    ---Work Variables---    **//
@@ -42,12 +44,15 @@ public class PlayerManager : MonoBehaviour
     }
     
     public bool IsActive() {
-        return _currentState is States.IDLE or States.WALKING;
+        return _currentState != States.DISABLED;
+    }
+
+    public bool IsGrounded() {
+        return Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
     }
     
     public bool CanJump() {
-        bool grounded = Physics.BoxCast(transform.position, rcBoxSize, -transform.up, transform.rotation, rcBoxMaxDistance, terrain);
-        if (_currentState != States.JUMPING && IsActive() && grounded) {
+        if (_currentState != States.JUMPING && IsActive() && IsGrounded()) {
             return true;
         }
         return false;
@@ -67,29 +72,46 @@ public class PlayerManager : MonoBehaviour
                 WalkAnim();
                 break;
             case States.JUMPING:
-                //Cooldown for the jump.
-                
-                SwitchState(States.IDLE);
                 JumpAnim();
+                StartCoroutine(JumpCooldown());
                 break;
         }
         _currentState = newState;
     }
     
     public void WalkAnim() {
-        
+        if (_currentState == States.JUMPING) {
+            return;
+        }
+        anim.CrossFade("walk", 0.2f, 0);
     }
     
     public void JumpAnim() {
-        
+        anim.CrossFade("jump", 0, 0);
     }
     
     public void IdleAnim() {
-        
+        if (_currentState == States.JUMPING) {
+            return;
+        }
+        anim.CrossFade("Idle", 0.2f, 0);
     }
 
     private void Start() {
         _currentState = States.IDLE;
+    }
+
+    private IEnumerator JumpCooldown() {
+        float timerS = Time.time;
+        while (Time.time - timerS <= 0.5f) {
+            yield return null;
+        }
+        while (!IsGrounded()) {
+            yield return null;
+        }
+        
+        SwitchState(States.IDLE);
+        IdleAnim();
     }
     
     //Debug

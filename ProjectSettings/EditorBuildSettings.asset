@@ -20,4 +20,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Casa prototipo.unity
     guid: f41835d507209da4680e11de315d4b39
+
   m_configObjects: {}
