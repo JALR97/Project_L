@@ -1,21 +1,19 @@
 using System;
-using System.Collections.Generic;
-using TMPro;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 // ReSharper disable InconsistentNaming
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager Instance;
     public GameState PrevState;
     public GameState State;
 
-    public static event Action<GameState> OnGameStateChange;
-    public enum GameState
-    {
+    public static event Action<GameState> OnGameStateChange; 
+    public enum GameState {
         MainMenu,
+        Credits,
         Exploring,
         Puzzle,
         Paused,
@@ -26,9 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
+    [SerializeField] private GameObject creditsUI;
+    [SerializeField] private GameObject mainMenuUI;
 
     public GameObject hint_UI;
-
 
     //  [[ set in Start() ]] 
 
@@ -109,12 +108,9 @@ public class GameManager : MonoBehaviour
         SwitchState(GameState.Puzzle);
     }
 
-    public void SwitchState(GameState newState)
-    {
-        PrevState = State;
+    public void SwitchState(GameState newState) {
         State = newState;
-        switch (newState)
-        {
+        switch (newState) {
             case GameState.MainMenu:
                 break;
             case GameState.Exploring:
@@ -125,10 +121,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 break;
+            case GameState.Credits:
+                break;
         }
         OnGameStateChange?.Invoke(newState);
     }
-
     public void GameOver()
     {
         if (State != GameState.GameOver)
@@ -146,7 +143,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
-
     public void SceneChange(string scene)
     {
         switch (scene)
@@ -162,4 +158,24 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+    public void ShowCredits()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.Credits;
+        mainMenuUI.SetActive(false);
+        creditsUI.SetActive(true);
+    }
+    public void ShowMainMenu()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.MainMenu;
+        creditsUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
 }

@@ -503,7 +503,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 123463400}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
+          type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SceneChange
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: yggdrasil
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &123463400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,7 +1395,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570008537}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1190724515}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CloseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &570008537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,6 +3551,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc21d6791699094ca99f34900bb7878, type: 3}
+--- !u!114 &1190724515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190724514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49d87ea1c4035148bee902db6927cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1209541607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,7 +3578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1209541608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4116,7 +4153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 99.91684, y: 52}
+  m_AnchoredPosition: {x: 68, y: 52}
   m_SizeDelta: {x: 199.83368, y: 52}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1842520151
@@ -4353,7 +4390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -42}
   m_SizeDelta: {x: 443.9917, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1885528907
@@ -4935,7 +4972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2141180578
 RectTransform:
   m_ObjectHideFlags: 0
