@@ -21,23 +21,32 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1283944200887674479, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: -6255724575833546846, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.10000014
-      value: {fileID: 2761045559674806537, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: 8860257156541306303, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.20000005
-      value: {fileID: -5495985506407742786, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: 929040726155391238, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.29999995
-      value: {fileID: 6416788511447333153, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: -1175845876273848149, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.39999986
-      value: {fileID: -4482853653095872418, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: 4525477596593254418, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.50000024
-      value: {fileID: -3451087584871770156, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: -3964456157335039278, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.60000014
-      value: {fileID: 1407896607499344616, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: -162915674298907673, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.70000005
-      value: {fileID: 1687614574350150663, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: 6052365238266604624, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     - time: 0.8000001
-      value: {fileID: 1687614574350150663, guid: 1b0309cb73a72e945889148e1b8589f0, type: 3}
+      value: {fileID: 6052365238266604624, guid: 9922d5976f95a874ba0a53a5d7ab7656,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
