@@ -106,11 +106,10 @@ public class PlayerManager : MonoBehaviour
         while (Time.time - timerS <= 0.5f) {
             yield return null;
         }
-        Debug.Log("Wait for ground");
         while (!IsGrounded()) {
             yield return null;
         }
-        Debug.Log("Back on ground");
+        
         SwitchState(States.IDLE);
         IdleAnim();
     }

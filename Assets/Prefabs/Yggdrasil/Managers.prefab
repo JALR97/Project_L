@@ -1058,7 +1058,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 902437046234837585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3737109710784340295}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Endgame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4893157969896258525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8262647033110985740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3737109710784340295}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &37499091528790917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2161,6 +2185,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc21d6791699094ca99f34900bb7878, type: 3}
+--- !u!114 &3737109710784340295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
+    type: 3}
+  m_PrefabInstance: {fileID: 6205185691698444147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49d87ea1c4035148bee902db6927cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6508483140956306482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 887201895952943937, guid: 1bc21d6791699094ca99f34900bb7878,
