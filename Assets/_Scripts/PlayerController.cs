@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = (horizontalInput * mainCameraForTPS.transform.right + verticalInput * cameraForward).normalized;
         movement.y = 0f;
-        rb.AddForce(movement * (speed * Time.deltaTime), ForceMode.Force);
+        rb.AddForce(movement * (speed * Time.deltaTime), ForceMode.VelocityChange);
     }
     
     void Jump() {
