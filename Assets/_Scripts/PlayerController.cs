@@ -9,26 +9,27 @@ public class PlayerController : MonoBehaviour
     
     //Componentes
     [SerializeField] private PlayerManager playerManager;
-    [SerializeField] private Transform thirdPersonCamera;
+    [SerializeField] private Transform mainCameraForTPS;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Interactor _interactor;
     
     //variables de balance
     [SerializeField] private float speed = 20f;
-    
+    [SerializeField] private float jumpForce = 20f;
     //variables de trabajo
     private Vector3 moveDirection;
     private float horizontalInput;
     private float verticalInput;
-    
     //Funciones
     private void Start() {
-        thirdPersonCamera = GameObject.FindGameObjectWithTag("TPS").transform;
+        mainCameraForTPS = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E) && playerManager.IsActive()) {
             _interactor.Interact();
         }
+        if (Input.GetKeyDown(KeyCode.Space) && playerManager.CanJump())
+            Jump();
     }
 
     private void FixedUpdate()
@@ -36,24 +37,45 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        
         if (moveDirection.magnitude > 0 && playerManager.IsActive()) {
             MovePlayer();
+            if (playerManager.IsGrounded()) {
+                playerManager.SwitchState(PlayerManager.States.WALKING);
+            }
+        }
+        else if(playerManager.IsActive() && playerManager.IsGrounded()){
+            playerManager.SwitchState(PlayerManager.States.IDLE);
         }
     }
+    
     void MovePlayer() {
-        float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + thirdPersonCamera.eulerAngles.y ;            
-            
+        float targetAngle;
+
+        if (moveDirection.x != 0 && moveDirection.y != 0)
+        {
+            targetAngle = mainCameraForTPS.eulerAngles.y;
+
+        }
+        else
+        {
+            targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + mainCameraForTPS.eulerAngles.y;
+
+        }
         transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-        Vector3 move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        Vector3 cameraForward = thirdPersonCamera.transform.forward;
+        Vector3 cameraForward = mainCameraForTPS.transform.forward;
         cameraForward.y = 0f;  // Mantener el movimiento en el plano horizontal
         cameraForward.Normalize();
 
-        Vector3 movement = (horizontalInput * thirdPersonCamera.transform.right + verticalInput * cameraForward).normalized;
+        Vector3 movement = (horizontalInput * mainCameraForTPS.transform.right + verticalInput * cameraForward).normalized;
         movement.y = 0f;
-        rb.velocity = movement * (speed * Time.deltaTime);
+        rb.AddForce(movement * (speed * Time.deltaTime), ForceMode.Force);
+    }
+    
+    void Jump() {
+        playerManager.SwitchState(PlayerManager.States.JUMPING);
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
     }
 }
