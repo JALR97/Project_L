@@ -9,11 +9,12 @@ public class PuzzleManager : MonoBehaviour
 {
     //**    ---Enums---    **//
     public enum Puzzle{
-        CABLES
+        CABLES,
+        LIQUIDSORT
     }
     //**    ---Components---    **//
     //  [[ set in editor ]] 
-    [SerializeField] private GameObject puzzleCables;
+    [SerializeField] private GameObject puzzle;
     [SerializeField] private Transform puzzleArea;
     [SerializeField] private VolumeProfile _normalProfile;
 
@@ -44,7 +45,7 @@ public class PuzzleManager : MonoBehaviour
         puzzleGameObject = Instantiate(FetchPuzzle(puzzle), puzzleArea);
         switch (puzzle) {
             case Puzzle.CABLES:
-                puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
+                puzzleGameObject.GetComponent<PuzzleLiquidSort>().setManager(gameObject);
                 break;
         }
     }
@@ -72,7 +73,9 @@ public class PuzzleManager : MonoBehaviour
     private GameObject FetchPuzzle(Puzzle puzzleId) {
         switch (puzzleId) {
             case Puzzle.CABLES:
-                return puzzleCables;
+                return puzzle;
+            case Puzzle.LIQUIDSORT:
+                return puzzle;
         }
         
         return null;
