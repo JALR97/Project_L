@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
     private int completedPuzzles = 0;
     private int totalPuzzles = 1;
     //private int foundCapys = 0;
-    private int totalCapys = 0;
+    private int totalCapys = 14;
 
     //**    ---Properties---    **//
 
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour {
     public void GameOver() {
         if (State != GameState.GameOver) {
             int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
-            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}\n\nXXX Encontrados: {collected.Count} / {collects}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);
