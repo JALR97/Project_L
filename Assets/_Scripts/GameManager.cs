@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -88,14 +89,16 @@ public class GameManager : MonoBehaviour {
             Destroy(UIContainer);
         }
     }
-
-    private void Start()
-    {
-        SwitchState(GameState.Exploring);
-    }
-
+    
     public void Endgame() {
         SceneChange("menu");
+        Reset();
+    }
+
+    private void Reset() {
+        foundCapys = new List<LostCapy.CapyID>();
+        collected = new List<int>();
+        PrevScene = 0;
     }
 
     public void CollectableTaken(int id) {
@@ -150,7 +153,6 @@ public class GameManager : MonoBehaviour {
         OnGameStateChange?.Invoke(newState);
     }
 
-
     public void GameOver() {
         if (State != GameState.GameOver) {
             int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
@@ -169,41 +171,57 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private IEnumerator LoadAsync(string scene) {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        if (scene == "Yggdrasil") {
+            if (PrevScene == 0) {
+                mainMenuUI.SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.position =
+                    GameObject.FindGameObjectWithTag("STPoint").transform.position;
+                
+            }
+            else {
+                GameObject.FindGameObjectWithTag("Player").transform.position =
+                    GameObject.FindGameObjectWithTag("HoPoint").transform.position;
+            }
+        }
+    }
+    
     public void SceneChange(string scene) {
         switch (scene) {
             case "yggdrasil":
-                SceneManager.LoadScene(0);
-                if (PrevScene == 0) {
-                    GameObject.FindGameObjectWithTag("Player").transform.position =
-                        GameObject.FindGameObjectWithTag("STPoint").transform.position;
-                }
-                else {
-                    GameObject.FindGameObjectWithTag("Player").transform.position =
-                        GameObject.FindGameObjectWithTag("HoPoint").transform.position;
-                }
+                LoadAsync("Yggdrasil");
                 break;
             case "casa":
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
+                PrevScene = 1;
                 break;
             case "menu":
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(0);
+                PrevScene = 1;
+                ShowMainMenu();
                 break;
         }
     }
 
-    public void CloseGame()
-    {
+    public void CloseGame() {
         Application.Quit();
     }
-    public void ShowCredits()
-    {
+    public void ShowCredits() {
         PrevState = Instance.State;
         Instance.State = GameState.Credits;
         mainMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
-    public void ShowMainMenu()
-    {
+    
+    public void ShowMainMenu() {
         PrevState = Instance.State;
         Instance.State = GameState.MainMenu;
         creditsUI.SetActive(false);

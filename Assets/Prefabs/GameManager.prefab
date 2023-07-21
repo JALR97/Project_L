@@ -44,3 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49d87ea1c4035148bee902db6927cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevScene: 0
+  PrevState: 0
+  State: 0
+  _puzzleManager: {fileID: 0}
+  pauseUI: {fileID: 0}
+  gameoverUI: {fileID: 0}
+  UIContainer: {fileID: 0}
+  creditsUI: {fileID: 0}
+  mainMenuUI: {fileID: 0}
+  hint_UI: {fileID: 0}
