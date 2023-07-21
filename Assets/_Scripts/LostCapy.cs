@@ -28,6 +28,7 @@ public class LostCapy : MonoBehaviour, IInteractable
         if (id == CapyID.DEFAULT) {
             if (!GameManager.Instance.hasCapyBeenFound(defId)) {
                 WaveAnim();
+                GameManager.Instance.Prompt("Me encontraste!");
                 //Show message that capy was found
                 //Debug.Log($"capy found: {id}");
                 GameManager.Instance.CapyFound(defId);
