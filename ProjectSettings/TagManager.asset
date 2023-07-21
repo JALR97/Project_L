@@ -8,6 +8,9 @@ TagManager:
   - UItooltip
   - Collectable
   - Capy
+  - Volume
+  - STPoint
+  - HoPoint
   layers:
   - Default
   - TransparentFX

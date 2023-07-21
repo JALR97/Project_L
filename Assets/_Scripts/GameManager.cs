@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
-// ReSharper disable InconsistentNaming
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
+    public int PrevScene = 0;
     public GameState PrevState;
     public GameState State;
 
@@ -26,6 +25,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
+    [SerializeField] private GameObject UIContainer;
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -42,16 +42,15 @@ public class GameManager : MonoBehaviour {
     //  [[ internal work ]] 
     private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
     private List<int> collected = new List<int>();
-    private int completedPuzzles = 0;
+    private List<PuzzleManager.Puzzle> completedPuzzles = new List<PuzzleManager.Puzzle>();
     private int totalPuzzles = 1;
-    //private int foundCapys = 0;
-    private int totalCapys = 14;
+    private int totalCapys = 15;
 
     //**    ---Properties---    **//
 
 
     //**    ---Functions---    **//
-    private void LoadCollectables() {
+    public void LoadCollectables() {
         Transform container = GameObject.FindGameObjectWithTag("Collectable").transform;
         for (int i = 0; i < container.childCount; i++) {
             container.GetChild(i).GetComponent<Collectable>().id = i;
@@ -79,15 +78,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
     private void Awake() {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(transform.parent);
         }
         else {
-
             Destroy(gameObject);
+            Destroy(UIContainer);
         }
     }
 
@@ -95,7 +93,6 @@ public class GameManager : MonoBehaviour {
     {
         SwitchState(GameState.Exploring);
     }
-
 
     public void Endgame() {
         SceneChange("menu");
@@ -119,9 +116,12 @@ public class GameManager : MonoBehaviour {
         return defaultCapys.Contains(capy);
     }
     
-    public void Solved() {
-
-        completedPuzzles += 1;
+    public bool hasBeenSolved(PuzzleManager.Puzzle puzzle) {
+        return completedPuzzles.Contains(puzzle);
+    }
+    
+    public void Solved(PuzzleManager.Puzzle puzzle) {
+        completedPuzzles.Add(puzzle);
     }
 
     public void TriggeredPuzzle(PuzzleManager.Puzzle puzzle)
@@ -173,7 +173,14 @@ public class GameManager : MonoBehaviour {
         switch (scene) {
             case "yggdrasil":
                 SceneManager.LoadScene(0);
-                LoadCollectables();
+                if (PrevScene == 0) {
+                    GameObject.FindGameObjectWithTag("Player").transform.position =
+                        GameObject.FindGameObjectWithTag("STPoint").transform.position;
+                }
+                else {
+                    GameObject.FindGameObjectWithTag("Player").transform.position =
+                        GameObject.FindGameObjectWithTag("HoPoint").transform.position;
+                }
                 break;
             case "casa":
                 SceneManager.LoadScene(1);

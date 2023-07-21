@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class PuzzleManager : MonoBehaviour
     //  [[ set in editor ]] 
     [SerializeField] private GameObject puzzleCables;
     [SerializeField] private Transform puzzleArea;
+    [SerializeField] private VolumeProfile _normalProfile;
 
     //**    ---Variables---    **//
     private Puzzle _currentPuzzle;
@@ -53,7 +56,11 @@ public class PuzzleManager : MonoBehaviour
     }
 
     public void Completed() {
-        GameManager.Instance.Solved();
+        GameManager.Instance.Solved(_currentPuzzle);
+        if (_currentPuzzle == Puzzle.CABLES) {
+            GameObject.FindGameObjectWithTag("Capy").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Volume").GetComponent<Volume>().profile = _normalProfile;
+        }
         Exit();
     }
 

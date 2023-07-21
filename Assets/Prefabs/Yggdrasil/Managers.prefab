@@ -34,9 +34,7 @@ RectTransform:
   - {fileID: 6622093878580205571}
   - {fileID: 6043895090914798710}
   - {fileID: 443416468347338689}
-  - {fileID: 6622093878580205571}
   - {fileID: 2029726317374101683}
-
   m_Father: {fileID: 778680491235789027}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1946,6 +1944,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 397738362369161581}
     m_Modifications:
+    - target: {fileID: 1360088712476148021, guid: 8df95650cecad994495fb11a3271c2ee,
+        type: 3}
+      propertyPath: _profileCasa
+      value: 
+      objectReference: {fileID: 11400000, guid: 922892b0480ef974292e140a438b5546,
+        type: 2}
+    - target: {fileID: 1360088712476148021, guid: 8df95650cecad994495fb11a3271c2ee,
+        type: 3}
+      propertyPath: _normalProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823,
+        type: 2}
     - target: {fileID: 1934275023682520253, guid: 8df95650cecad994495fb11a3271c2ee,
         type: 3}
       propertyPath: m_Name
@@ -2182,6 +2192,17 @@ PrefabInstance:
       propertyPath: gameoverUI
       value: 
       objectReference: {fileID: 146732056711726369}
+    - target: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
+        type: 3}
+      propertyPath: UIContainer
+      value: 
+      objectReference: {fileID: 4064514733108217039}
+    - target: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
+        type: 3}
+      propertyPath: _normalProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823,
+        type: 2}
     - target: {fileID: 7332386832769029684, guid: 1bc21d6791699094ca99f34900bb7878,
         type: 3}
       propertyPath: _puzzleManager

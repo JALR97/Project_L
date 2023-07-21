@@ -782,9 +782,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1177835994239774170}
   - component: {fileID: 3558403756780935210}
+  - component: {fileID: 6286919699402329868}
   m_Layer: 0
   m_Name: FXVolume
-  m_TagString: Untagged
+  m_TagString: Volume
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,6 +822,19 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 922892b0480ef974292e140a438b5546, type: 2}
+--- !u!114 &6286919699402329868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153901190059484048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392e923917d942b4c81097f59bdc24a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
 --- !u!1 &8443577105121259596
 GameObject:
   m_ObjectHideFlags: 0
