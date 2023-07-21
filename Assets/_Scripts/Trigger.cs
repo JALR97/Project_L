@@ -19,7 +19,7 @@ public class Trigger : MonoBehaviour, IInteractable
     //  [[ balance control ]] 
     
     //  [[ internal work ]] 
-    
+    private bool flag = false;
     
     //**    ---Properties---    **//
     
@@ -43,8 +43,15 @@ public class Trigger : MonoBehaviour, IInteractable
                 GameManager.Instance.SceneChange("yggdrasil");
                 break;
             case Type.DAD:
-                GameManager.Instance.GameOverUI();
-                break;
+                if (flag) {
+                    GameManager.Instance.GameOverUI();
+                    flag = false;
+                    break;    
+                }else {
+                    GameManager.Instance.Prompt("Quieres ya dejar de jugar y llamar a los demas?");
+                    flag = true;
+                    break;
+                }                
         }
     }
 }
