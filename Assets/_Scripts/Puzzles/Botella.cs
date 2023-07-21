@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Botella : MonoBehaviour
@@ -14,49 +12,118 @@ public class Botella : MonoBehaviour
     //**    ---Variables---    **//
     private BotellaManager botellaTempScript;
     private RectTransform botellaRT;
-    private float distance;
-    private float angle;
-
+    private Image LiquidTemp;
+    private int posicionVacia;
+    private int posicionOcupada;
     //**    ---Properties---    **//
     public float elevacionBotella;
-    public Color[] color;
 
     //**    ---Functions---    **//
     void Start()
     {
         botellaTempScript = botellaTemp.GetComponent<BotellaManager>();
-        botellaRT = gameObject.GetComponent<RectTransform>();
    
-        for (int i = 0; i < color.Length; i++)
-        {
-            Color temp = color[i];
-            int randomIndex = Random.Range(i, color.Length);
-            color[i] = color[randomIndex];
-            color[randomIndex] = temp;
-        }
-        for (int i = 0; i < color.Length; i++)
-        {
-            Liquids[i].color = color[i];
-        }
+
     }
     public void OnClickBotella()
     {
         if (IsFirstSelection())
         {
-            botellaRT.position = new Vector3(botellaRT.position.x, botellaRT.position.y + elevacionBotella, botellaRT.position.z);
-            Debug.Log("h");
+            for (int i = 0; i < Liquids.Length; i++)
+            {
+                botellaTempScript.putImage(Liquids[i], i);
+                Debug.Log(botellaTempScript.getImage()[i].color + "ha");
+            }
+        }
+        else
+        {
+            Debug.Log("h1"); 
 
+            Image[] botellaTempLiquid = botellaTempScript.getImage();
+
+            posicionVacia = PosicionLibre(Liquids);
+            posicionOcupada= PosicionOcupada(botellaTempLiquid);
+            Debug.Log(posicionVacia);
+            if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + 1].color != botellaTempLiquid[posicionOcupada].color)
+            {
+                LiquidTemp = botellaTempLiquid[posicionOcupada];
+                Liquids[posicionVacia].color = LiquidTemp.color;
+                Color nuevoColor = LiquidTemp.color;
+                nuevoColor.a = 0f;
+                LiquidTemp.color = nuevoColor;
+                //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
+
+            }
+            botellaTempScript.reiniciarImage();
+
+        }
+
+    }
+    private int PosicionOcupada(Image[] a)
+    {
+        int posicion_ocupada = -1;
+        int i = 0;
+        while(i  < a.Length && posicion_ocupada == -1)
+        {
+            if (a[i].color.a >0)
+            {
+                posicion_ocupada = i;
+            }
+            i += 1;
+        }
+        return posicion_ocupada;
+    }
+    private int PosicionLibre(Image[] a)
+    {
+        int posicion_libre = -1;
+        for(int i = 0; i< a.Length; i++)
+        {
+            if(a[i].color.a == 0)
+            {
+                posicion_libre = i;
+            }
+        }
+        return posicion_libre;
+    }
+     
+    private void ModificarOpacidad()
+    {
+        Debug.Log("1");
+        float nuevaOpacidad = LiquidTemp.color.a - 0.1f;
+
+        // Asegurarse de que la nueva opacidad no sea menor que cero.
+        nuevaOpacidad = Mathf.Max(nuevaOpacidad, 0f);
+
+        // Actualizar la opacidad del componente Image.
+        Color nuevoColor = LiquidTemp.color;
+        nuevoColor.a = nuevaOpacidad;
+        LiquidTemp.color = nuevoColor;
+
+        float nuevaOpacidad2 = Liquids[posicionVacia].color.a + 0.1f;
+
+        // Asegurarse de que la nueva opacidad no sea menor que cero.
+        nuevaOpacidad = Mathf.Min(nuevaOpacidad, 1f);
+
+        // Actualizar la opacidad del componente Image.
+        Color nuevoColor2 = Liquids[posicionVacia].color;
+        nuevoColor2.a = nuevaOpacidad2;
+        Liquids[posicionVacia].color = nuevoColor2;
+
+        if (nuevaOpacidad <= 0f || nuevaOpacidad2 >= 1f)
+        {
+            CancelInvoke("ModificarOpacidad");
         }
     }
     private bool IsFirstSelection()
     {
-        if (botellaTempScript != null)
+
+        Image[] colorTemp = botellaTempScript.getImage();
+        int activo = 0;
+        if (colorTemp[0] != null)
         {
-            Image[] colorTemp = botellaTempScript.getImage();
-            int activo = 0;
             for (int i = 0; i < colorTemp.Length; i++)
             {
-                Debug.Log(botellaTempScript.getImage()[i].color);
+                
 
                 if (colorTemp[i].color.a > 0)
                 {
@@ -65,14 +132,10 @@ public class Botella : MonoBehaviour
             }
             if (activo > 0)
                 return false;
-            
         }
         return true;
     }
 
  
-    void Update()
-    {
-        
-    }
+
 }

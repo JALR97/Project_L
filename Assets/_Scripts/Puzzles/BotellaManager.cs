@@ -5,9 +5,18 @@ using UnityEngine.UI;
 public class BotellaManager : MonoBehaviour
 {
     [SerializeField] private Image[] liq;
-    public Color[] color;
+
     public Image[] getImage()
     {
         return liq;
+    }
+
+    public void putImage(Image l, int pos)
+    {
+        liq[pos] = l;
+    }
+    public void reiniciarImage()
+    {
+        liq = new Image[liq.Length];
     }
 }
