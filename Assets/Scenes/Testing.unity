@@ -317,6 +317,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9333334
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 6378214541320277724, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_Color.b
@@ -518,6 +523,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.16862746
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 6378214541320277724, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_Color.b
@@ -693,6 +703,7 @@ GameObject:
   - component: {fileID: 1252883323}
   - component: {fileID: 1252883325}
   - component: {fileID: 1252883324}
+  - component: {fileID: 1252883326}
   m_Layer: 0
   m_Name: PuzzleLiquidSort
   m_TagString: Untagged
@@ -718,7 +729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.35240173, y: 0}
+  m_AnchoredPosition: {x: -0.35238647, y: 0}
   m_SizeDelta: {x: 129.9391, y: 119.0754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252883324
@@ -759,6 +770,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252883322}
   m_CullTransparentMesh: 1
+--- !u!114 &1252883326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252883322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c6c34eefb353b4788201b09ef92986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completado: 0
+  pzm: {fileID: 2024096317}
 --- !u!1001 &1260803411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -797,6 +822,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: color.Array.data[0].a
@@ -975,6 +1005,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: color.Array.data[0].a
@@ -1508,6 +1543,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef47e995cdb4a42a6b2f8992d9a9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2024096317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1360088712476148021, guid: 8df95650cecad994495fb11a3271c2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2759626308231066262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29188c9c6e4781f42a809c027cd279fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2039828834

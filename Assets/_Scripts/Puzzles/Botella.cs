@@ -5,25 +5,23 @@ public class Botella : MonoBehaviour
     //**    ---Components---    **//
     [SerializeField] private Image[] Liquids;
     [SerializeField] private GameObject botellaTemp;
-    [SerializeField] private RectTransform dest;
-    [SerializeField] private RectTransform rectT;
-
+    [SerializeField] private GameObject pLiquidSort;
 
     //**    ---Variables---    **//
     private BotellaManager botellaTempScript;
-    private RectTransform botellaRT;
     private Image LiquidTemp;
     private int posicionVacia;
     private int posicionOcupada;
+    private PuzzleLiquidSort pls;
+    private bool completado_color;
     //**    ---Properties---    **//
-    public float elevacionBotella;
+
 
     //**    ---Functions---    **//
     void Start()
     {
         botellaTempScript = botellaTemp.GetComponent<BotellaManager>();
-   
-
+        pls = pLiquidSort.GetComponent<PuzzleLiquidSort>();
     }
     public void OnClickBotella()
     {
@@ -32,19 +30,19 @@ public class Botella : MonoBehaviour
             for (int i = 0; i < Liquids.Length; i++)
             {
                 botellaTempScript.putImage(Liquids[i], i);
-                Debug.Log(botellaTempScript.getImage()[i].color + "ha");
             }
         }
         else
         {
-            Debug.Log("h1"); 
+
 
             Image[] botellaTempLiquid = botellaTempScript.getImage();
 
             posicionVacia = PosicionLibre(Liquids);
             posicionOcupada= PosicionOcupada(botellaTempLiquid);
             Debug.Log(posicionVacia);
-            if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + 1].color != botellaTempLiquid[posicionOcupada].color)
+            int posPosterior = posicionVacia == 3 ? 0 : 1;
+            if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + posPosterior].color != botellaTempLiquid[posicionOcupada].color)
             {
                 LiquidTemp = botellaTempLiquid[posicionOcupada];
                 Liquids[posicionVacia].color = LiquidTemp.color;
@@ -52,6 +50,20 @@ public class Botella : MonoBehaviour
                 nuevoColor.a = 0f;
                 LiquidTemp.color = nuevoColor;
                 //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
+                if( posicionVacia == 0)
+                {
+                    pls.completado += 1;
+                    completado_color = true;
+                }
+                if(pls.completado == Liquids.Length -1)
+                {
+                    pls.Completed();
+                }
+                if(posicionOcupada == 0 && completado_color == true)
+                {
+                    pls.completado -=1;
+                    completado_color = false;
+                }
 
             }
             botellaTempScript.reiniciarImage();
