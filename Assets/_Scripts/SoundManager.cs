@@ -36,27 +36,19 @@ public class SoundManager : MonoBehaviour {
         switch (id) {
             case clipID.BUTTON:
                 return _clips[0];
-                break;
             case clipID.CAPYFOUND:
                 return _clips[1];
-                break;
             case clipID.COLLECTABLE:
                 return _clips[2];
-                break;
             case clipID.JUMP:
                 return _clips[3];
-                break;
             case clipID.DOOR:
                 return _clips[4];
-                break;
             case clipID.CABLES:
                 return _clips[5];
-                break;
             case clipID.MUSIC:
                 return _clips[6];
-                break;
         }
-
         return _clips[0];
     }
 }

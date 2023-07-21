@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     
     void Jump() {
+        GameManager.Instance.PlayOne(SoundManager.clipID.JUMP);
         playerManager.SwitchState(PlayerManager.States.JUMPING);
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);

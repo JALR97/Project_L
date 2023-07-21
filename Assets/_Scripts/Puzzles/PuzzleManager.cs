@@ -58,6 +58,7 @@ public class PuzzleManager : MonoBehaviour
     public void Completed() {
         GameManager.Instance.Solved(_currentPuzzle);
         if (_currentPuzzle == Puzzle.CABLES) {
+            GameManager.Instance.PlayOne(SoundManager.clipID.CABLES);
             GameObject.FindGameObjectWithTag("Capy").transform.GetChild(0).gameObject.SetActive(true);
             GameObject.FindGameObjectWithTag("Volume").GetComponent<Volume>().profile = _normalProfile;
         }

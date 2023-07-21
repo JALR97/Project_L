@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     //**    ---Components---    **//
     //  [[ set in editor ]] 
     [SerializeField] private PuzzleManager _puzzleManager;
+    [SerializeField] private SoundManager _soundManager;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject UIContainer;
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour {
         else {
             Destroy(gameObject);
             Destroy(UIContainer);
+            Destroy(_soundManager);
         }
     }
     
@@ -107,13 +109,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void CollectableTaken(int id) {
+        _soundManager.PlaySimple(SoundManager.clipID.COLLECTABLE);
         collected.Add(id);
     }
     
     public void CapyFound(LostCapy.CapyID capy) {
+        _soundManager.PlaySimple(SoundManager.clipID.CAPYFOUND);
         foundCapys.Add(capy);
     }
     public void CapyFound(int capy) {
+        _soundManager.PlaySimple(SoundManager.clipID.CAPYFOUND);
         defaultCapys.Add(capy);
     }
     
@@ -138,6 +143,10 @@ public class GameManager : MonoBehaviour {
         SwitchState(GameState.Puzzle);
     }
 
+    public void PlayOne(SoundManager.clipID id) {
+        _soundManager.PlaySimple(id);
+    }
+    
     public void SwitchState(GameState newState) {
         PrevState = State;
         State = newState;
@@ -206,12 +215,14 @@ public class GameManager : MonoBehaviour {
                 }
                 else {
                     PlayerSpawn = 1;
+                    GameManager.Instance.PlayOne(SoundManager.clipID.DOOR);
                 }
                 break;
             case "casa":
                 SceneManager.LoadScene(2);
                 PlayerSpawn = -1;
                 PrevScene = 1;
+                GameManager.Instance.PlayOne(SoundManager.clipID.DOOR);
                 break;
             case "menu":
                 SceneManager.LoadScene(0);
