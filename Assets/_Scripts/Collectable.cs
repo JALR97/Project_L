@@ -19,7 +19,7 @@ public class Collectable : MonoBehaviour
     private Vector3 initialPosition;
     
     //**    ---Properties---    **//
-    public int id;
+    public int id = 0;
     
     //**    ---Functions---    **//
     private void OnTriggerEnter(Collider other) {
@@ -35,7 +35,7 @@ public class Collectable : MonoBehaviour
     }
 
     private void Update() {
-        float newY = initialPosition.y + Mathf.Sin(Time.time * Speed) * Amplitude;
+        float newY = initialPosition.y + Mathf.Sin(Time.time * Speed + id) * Amplitude;
 
         transform.position = new Vector3(initialPosition.x, newY, initialPosition.z);
     }
