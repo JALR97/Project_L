@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 1391619404332770869, guid: 5cbc4c6d63f081946bad51d1a556edb8,
         type: 3}
       propertyPath: speed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1391619404332770869, guid: 5cbc4c6d63f081946bad51d1a556edb8,
         type: 3}
@@ -602,6 +602,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3781084045004438364, guid: 5cbc4c6d63f081946bad51d1a556edb8,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8446e627591536e45b5e7fde1fe6882d,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
