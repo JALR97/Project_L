@@ -7,6 +7,7 @@ TagManager:
   - TPS
   - UItooltip
   - Collectable
+  - Capy
   layers:
   - Default
   - TransparentFX
