@@ -1146,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge_03
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a57165298a0a78940ac61ef2b71d8e2c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a57165298a0a78940ac61ef2b71d8e2c, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1520,6 +1524,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
       propertyPath: m_Name
       value: Bridge_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
       propertyPath: m_RootOrder
@@ -2046,6 +2054,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
       propertyPath: m_Name
       value: Bridge_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74c22cc3396c6c246abbeef5d6a6232d, type: 3}
       propertyPath: m_RootOrder
