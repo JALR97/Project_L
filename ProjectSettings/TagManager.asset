@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TPS
   - UItooltip
+  - Collectable
   layers:
   - Default
   - TransparentFX

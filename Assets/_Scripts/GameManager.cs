@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
 
     //  [[ internal work ]] 
     private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
+    private List<int> collected = new List<int>();
     private int completedPuzzles = 0;
     private int totalPuzzles = 1;
     //private int foundCapys = 0;
@@ -50,7 +51,17 @@ public class GameManager : MonoBehaviour {
 
 
     //**    ---Functions---    **//
+    private void LoadCollectables() {
+        Transform container = GameObject.FindGameObjectWithTag("Collectable").transform;
+        for (int i = 0; i < container.childCount; i++) {
+            container.GetChild(i).GetComponent<Collectable>().id = i;
+        }
 
+        foreach (int id in collected) {
+            container.GetChild(id).gameObject.SetActive(false);
+        }
+    }
+    
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (Instance.State is GameState.Exploring or GameState.Puzzle) {
@@ -88,6 +99,10 @@ public class GameManager : MonoBehaviour {
 
     public void Endgame() {
         SceneChange("menu");
+    }
+
+    public void CollectableTaken(int id) {
+        collected.Add(id);
     }
     
     public void CapyFound(LostCapy.CapyID capy) {
@@ -138,7 +153,8 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         if (State != GameState.GameOver) {
-            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}";
+            int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}\n\nXXX Encontrados: {collected.Count} / {collects}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);
@@ -157,6 +173,7 @@ public class GameManager : MonoBehaviour {
         switch (scene) {
             case "yggdrasil":
                 SceneManager.LoadScene(0);
+                LoadCollectables();
                 break;
             case "casa":
                 SceneManager.LoadScene(1);
