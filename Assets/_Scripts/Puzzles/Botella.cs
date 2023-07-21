@@ -5,13 +5,12 @@ public class Botella : MonoBehaviour
     //**    ---Components---    **//
     [SerializeField] private Image[] Liquids;
     [SerializeField] private GameObject botellaTemp;
-    [SerializeField] private RectTransform dest;
-    [SerializeField] private RectTransform rectT;
+
 
 
     //**    ---Variables---    **//
     private BotellaManager botellaTempScript;
-    private RectTransform botellaRT;
+
     private Image LiquidTemp;
     private int posicionVacia;
     private int posicionOcupada;
@@ -44,14 +43,19 @@ public class Botella : MonoBehaviour
             posicionVacia = PosicionLibre(Liquids);
             posicionOcupada= PosicionOcupada(botellaTempLiquid);
             Debug.Log(posicionVacia);
-            if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + 1].color != botellaTempLiquid[posicionOcupada].color)
+            int posPosterior = posicionVacia == 3 ? 0 : 1;
+            if (posicionVacia != -1)
             {
-                LiquidTemp = botellaTempLiquid[posicionOcupada];
-                Liquids[posicionVacia].color = LiquidTemp.color;
-                Color nuevoColor = LiquidTemp.color;
-                nuevoColor.a = 0f;
-                LiquidTemp.color = nuevoColor;
-                //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
+                if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + posPosterior].color != botellaTempLiquid[posicionOcupada].color)
+                {
+                    LiquidTemp = botellaTempLiquid[posicionOcupada];
+                    Liquids[posicionVacia].color = LiquidTemp.color;
+                    Color nuevoColor = LiquidTemp.color;
+                    nuevoColor.a = 0f;
+                    LiquidTemp.color = nuevoColor;
+                    //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
+
+                }
 
             }
             botellaTempScript.reiniciarImage();

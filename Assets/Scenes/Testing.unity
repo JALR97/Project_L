@@ -153,6 +153,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2759626308231066262}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &803402835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5917430515279009567, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6948926372752291329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &811669837
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +323,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9333334
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: botellaTemp
+      value: 
+      objectReference: {fileID: 803402835}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 6378214541320277724, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_Color.b
@@ -518,6 +534,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.16862746
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: botellaTemp
+      value: 
+      objectReference: {fileID: 803402835}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 6378214541320277724, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_Color.b
@@ -718,7 +744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.35240173, y: 0}
+  m_AnchoredPosition: {x: -0.35238647, y: 0}
   m_SizeDelta: {x: 129.9391, y: 119.0754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252883324
@@ -774,9 +800,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1449024412}
+    - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -785,6 +826,11 @@ PrefabInstance:
     - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Botella, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490190484184258598, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Botella, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2908262208662410866, guid: 8800727f2e6ff094badad43c07db56bf,
@@ -797,6 +843,16 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: botellaTemp
+      value: 
+      objectReference: {fileID: 803402835}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: color.Array.data[0].a
@@ -975,6 +1031,16 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: botellaTemp
+      value: 
+      objectReference: {fileID: 803402835}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: color.Array.data[0].a
@@ -2557,36 +2623,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1715103867}
     m_Modifications:
-    - target: {fileID: 296250510080675960, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 296250510080675960, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 296250510080675960, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 296250510080675960, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254595903490558205, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635924620294400350, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2635130346640284895, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2692,31 +2728,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4596320568354994935, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596320568354994935, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596320568354994935, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596320568354994935, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5245495386503730354, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5917430515279009567, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
         type: 3}
       propertyPath: m_Name
@@ -2770,6 +2781,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Botella, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: botellaTemp
+      value: 
+      objectReference: {fileID: 803402835}
+    - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
+        type: 3}
+      propertyPath: pLiquidSort
+      value: 
+      objectReference: {fileID: 1252883322}
     - target: {fileID: 4381948229482740296, guid: 8800727f2e6ff094badad43c07db56bf,
         type: 3}
       propertyPath: elevacionBotella
