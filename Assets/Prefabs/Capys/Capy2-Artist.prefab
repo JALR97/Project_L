@@ -23,6 +23,26 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 8771316965031273202}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Repeat
+      value: Necesito concentrarme
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: El aire es tan limpio aqui
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Como lograste llegar?
+      objectReference: {fileID: 0}
     - target: {fileID: 3574645365480223029, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
       propertyPath: m_Height
@@ -46,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}

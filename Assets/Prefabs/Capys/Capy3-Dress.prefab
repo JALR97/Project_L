@@ -133,6 +133,26 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 623824131931534219}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Repeat
+      value: Que quieres?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Oh, emm nope. Yo no organize ningun ritual
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563459007331468188, guid: 302dbd2abccb0294085c49845a0c7004,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Que tal esta el dia?
+      objectReference: {fileID: 0}
     - target: {fileID: 8914195330739868413, guid: 302dbd2abccb0294085c49845a0c7004,
         type: 3}
       propertyPath: m_RootOrder

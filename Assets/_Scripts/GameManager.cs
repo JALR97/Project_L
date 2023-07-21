@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject UIContainer;
+    [SerializeField] private DialogueUI DialogueBox;
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -242,6 +243,18 @@ public class GameManager : MonoBehaviour {
         creditsUI.SetActive(false);
         mainMenuUI.SetActive(true);
     }
+    
+    /////////////////Dialogue
+    public void LoadPrompts(List<string> messages) { 
+        DialogueBox.LoadPrompts(messages);
+    }
 
+    public void Prompt(string message) {
+        DialogueBox.Prompt(message);
+    }
+
+    public void Prompt() {
+        DialogueBox.Prompt();
+    }
 
 }
