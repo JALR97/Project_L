@@ -101,14 +101,8 @@ MonoBehaviour:
   - {fileID: 6378214541320277724}
   botellaTemp: {fileID: 5917430515279009567, guid: 2fa2e39664edf424b9c4f40ad25fc4a7,
     type: 3}
-  dest: {fileID: 0}
-  rectT: {fileID: 0}
-  connected: 0
-  color:
-  - {r: 0.121568635, g: 0.23137257, b: 1, a: 1}
-  - {r: 0.121568635, g: 1, b: 0.6862745, a: 1}
-  - {r: 1, g: 0.60784316, b: 0.121568635, a: 1}
-  - {r: 0.9333334, g: 0.27058825, b: 0.27058825, a: 1}
+  pLiquidSort: {fileID: 2352812679052302080, guid: 07d6de0ee21310f42a57a3046b30bdf1,
+    type: 3}
 --- !u!114 &2490190484184258598
 MonoBehaviour:
   m_ObjectHideFlags: 0

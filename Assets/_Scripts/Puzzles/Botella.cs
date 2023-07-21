@@ -5,15 +5,16 @@ public class Botella : MonoBehaviour
     //**    ---Components---    **//
     [SerializeField] private Image[] Liquids;
     [SerializeField] private GameObject botellaTemp;
-
+    [SerializeField] private GameObject pLiquidSort;
 
 
     //**    ---Variables---    **//
     private BotellaManager botellaTempScript;
-
+    private PuzzleLiquidSort pls;
     private Image LiquidTemp;
     private int posicionVacia;
     private int posicionOcupada;
+    private bool botella_completado;
     //**    ---Properties---    **//
 
 
@@ -21,8 +22,8 @@ public class Botella : MonoBehaviour
     void Start()
     {
         botellaTempScript = botellaTemp.GetComponent<BotellaManager>();
-   
-
+        pls = pLiquidSort.GetComponent<PuzzleLiquidSort>();
+        botella_completado = false;
     }
     public void OnClickBotella()
     {
@@ -57,6 +58,16 @@ public class Botella : MonoBehaviour
                     nuevoColor.a = 0f;
                     LiquidTemp.color = nuevoColor;
                     //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
+                    if(posicionVacia == 3 && botella_completado == false)
+                    {
+                        botella_completado = true;
+                        pls.botellasCompletadas += 1; 
+                    }
+
+                    if (pls.botellasCompletadas == 3)
+                    {
+                        pls.Completed();
+                    }
 
                 }
 
