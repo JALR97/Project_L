@@ -36,7 +36,6 @@ public class Botella : MonoBehaviour
         }
         else
         {
-            Debug.Log("h1"); 
 
             Image[] botellaTempLiquid = botellaTempScript.getImage();
 
@@ -51,19 +50,18 @@ public class Botella : MonoBehaviour
 
                 if (posicionVacia == Liquids.Length - 1 || compararRGBA(Liquids[posicionVacia + posPosterior].color, botellaTempLiquid[posicionOcupada].color) && !(Liquids[posicionVacia + posPosterior] == botellaTempLiquid[posicionOcupada]))
                 {
-                    Debug.Log("entro");
                     LiquidTemp = botellaTempLiquid[posicionOcupada];
                     Liquids[posicionVacia].color = LiquidTemp.color;
                     Color nuevoColor = LiquidTemp.color;
                     nuevoColor.a = 0f;
                     LiquidTemp.color = nuevoColor;
                     //InvokeRepeating("ModificarOpacidad", 0.5f, 1f);
-                    if(posicionVacia == 3 && botella_completado == false)
+                    if(posicionVacia == 0 && botella_completado == false && compararRGBA(Liquids[1].color, Liquids[2].color) && compararRGBA(Liquids[2].color, Liquids[3].color))
                     {
                         botella_completado = true;
                         pls.botellasCompletadas += 1; 
                     }
-
+                    Debug.Log(pls.botellasCompletadas+"segrg");
                     if (pls.botellasCompletadas == 3)
                     {
                         pls.Completed();
