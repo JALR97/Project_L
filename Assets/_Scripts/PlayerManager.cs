@@ -34,13 +34,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void StateChange(GameManager.GameState newState) {
-        if (newState != GameManager.GameState.Exploring) {
-            _currentState = States.DISABLED;
-        }
-        else {
+        if (newState == GameManager.GameState.Exploring) 
             _currentState = States.IDLE;
-        }
-        
+        else 
+            _currentState = States.DISABLED;
+
     }
     
     public bool IsActive() {
@@ -99,8 +97,17 @@ public class PlayerManager : MonoBehaviour
 
     private void Start() {
         _currentState = States.IDLE;
+        if (GameManager.Instance.PlayerSpawn == -1) {
+            //Nothing
+        }else if (GameManager.Instance.PlayerSpawn == 0) {
+            transform.position = GameObject.FindGameObjectWithTag("STPoint").transform.position;    
+        }
+        else {
+            transform.position = GameObject.FindGameObjectWithTag("HoPoint").transform.position;
+        }
+        GameManager.Instance.HideUI();
     }
-
+    
     private IEnumerator JumpCooldown() {
         float timerS = Time.time;
         while (Time.time - timerS <= 0.5f) {

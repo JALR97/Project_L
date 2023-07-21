@@ -1,14 +1,14 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
-// ReSharper disable InconsistentNaming
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
+    public int PrevScene = 0;
     public GameState PrevState;
     public GameState State;
 
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private PuzzleManager _puzzleManager;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameoverUI;
+    [SerializeField] private GameObject UIContainer;
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -42,16 +43,15 @@ public class GameManager : MonoBehaviour {
     //  [[ internal work ]] 
     private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
     private List<int> collected = new List<int>();
-    private int completedPuzzles = 0;
+    private List<PuzzleManager.Puzzle> completedPuzzles = new List<PuzzleManager.Puzzle>();
     private int totalPuzzles = 1;
-    //private int foundCapys = 0;
-    private int totalCapys = 14;
+    private int totalCapys = 15;
 
     //**    ---Properties---    **//
-
+    public int PlayerSpawn = 0;
 
     //**    ---Functions---    **//
-    private void LoadCollectables() {
+    public void LoadCollectables() {
         Transform container = GameObject.FindGameObjectWithTag("Collectable").transform;
         for (int i = 0; i < container.childCount; i++) {
             container.GetChild(i).GetComponent<Collectable>().id = i;
@@ -79,26 +79,30 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
     private void Awake() {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(transform.parent);
         }
         else {
-
             Destroy(gameObject);
+            Destroy(UIContainer);
         }
     }
-
-    private void Start()
-    {
-        SwitchState(GameState.Exploring);
+    
+    public void Endgame() {
+        gameoverUI.SetActive(false);
+        Time.timeScale = 1;
+        SceneChange("menu");
+        SwitchState(GameState.MainMenu);
+        Reset();
     }
 
-
-    public void Endgame() {
-        SceneChange("menu");
+    private void Reset() {
+        foundCapys = new List<LostCapy.CapyID>();
+        collected = new List<int>();
+        PrevScene = 0;
+        PlayerSpawn = 0;
     }
 
     public void CollectableTaken(int id) {
@@ -119,9 +123,12 @@ public class GameManager : MonoBehaviour {
         return defaultCapys.Contains(capy);
     }
     
-    public void Solved() {
-
-        completedPuzzles += 1;
+    public bool hasBeenSolved(PuzzleManager.Puzzle puzzle) {
+        return completedPuzzles.Contains(puzzle);
+    }
+    
+    public void Solved(PuzzleManager.Puzzle puzzle) {
+        completedPuzzles.Add(puzzle);
     }
 
     public void TriggeredPuzzle(PuzzleManager.Puzzle puzzle)
@@ -150,53 +157,86 @@ public class GameManager : MonoBehaviour {
         OnGameStateChange?.Invoke(newState);
     }
 
-
-    public void GameOver() {
+    public void GameOverUI() {
         if (State != GameState.GameOver) {
             int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
-            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles.Count} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);
             Time.timeScale = 0;
         }
-
         else {
-
             gameoverUI.SetActive(false);
-            SwitchState(PrevState);
+            SwitchState(GameState.Exploring);
             Time.timeScale = 1;
         }
     }
 
+    // private IEnumerator LoadAsync(string scene) {
+    //     AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+    //
+    //     // Wait until the asynchronous scene fully loads
+    //     while (!asyncLoad.isDone)
+    //     {
+    //         yield return null;
+    //     }
+    //
+    //     if (scene == "Yggdrasil") {
+    //         if (PrevScene == 0) {
+    //             mainMenuUI.SetActive(false);
+    //             GameObject.FindGameObjectWithTag("Player").transform.position =
+    //                 
+    //         }
+    //         else {
+    //             GameObject.FindGameObjectWithTag("Player").transform.position =
+    //                 GameObject.FindGameObjectWithTag("HoPoint").transform.position;
+    //         }
+    //     }
+    // }
+    
     public void SceneChange(string scene) {
         switch (scene) {
             case "yggdrasil":
-                SceneManager.LoadScene(0);
-                LoadCollectables();
+                SceneManager.LoadScene(1);
+                if (PrevScene == 0) {
+                    PlayerSpawn = 0;
+                    SwitchState(GameState.Exploring);
+                }
+                else {
+                    PlayerSpawn = 1;
+                }
                 break;
             case "casa":
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
+                PlayerSpawn = -1;
+                PrevScene = 1;
                 break;
             case "menu":
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(0);
+                PrevScene = 0;
+                ShowMainMenu();
                 break;
         }
     }
 
-    public void CloseGame()
-    {
+    public void CloseGame() {
         Application.Quit();
     }
-    public void ShowCredits()
-    {
+
+    public void HideUI() {
+        mainMenuUI.SetActive(false);
+        creditsUI.SetActive(false);
+    }
+    
+    public void ShowCredits() {
         PrevState = Instance.State;
         Instance.State = GameState.Credits;
         mainMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
-    public void ShowMainMenu()
-    {
+    
+    public void ShowMainMenu() {
         PrevState = Instance.State;
         Instance.State = GameState.MainMenu;
         creditsUI.SetActive(false);

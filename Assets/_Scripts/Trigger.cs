@@ -28,18 +28,22 @@ public class Trigger : MonoBehaviour, IInteractable
     public void Interact() {
         switch (_type) {
             case Type.CABLES:
-                GameManager.Instance.TriggeredPuzzle(PuzzleManager.Puzzle.CABLES);
+                if (!GameManager.Instance.hasBeenSolved(PuzzleManager.Puzzle.CABLES)) {
+                    GameManager.Instance.TriggeredPuzzle(PuzzleManager.Puzzle.CABLES);
+                }
                 break;
             case Type.CASA:
                 GameManager.Instance.hint_UI.SetActive(false);
+                GameManager.Instance.PrevScene = 1;
                 GameManager.Instance.SceneChange("casa");
                 break;
             case Type.Yggdrasil:
                 GameManager.Instance.hint_UI.SetActive(false);
+                GameManager.Instance.PrevScene = 2;
                 GameManager.Instance.SceneChange("yggdrasil");
                 break;
             case Type.DAD:
-                GameManager.Instance.GameOver();
+                GameManager.Instance.GameOverUI();
                 break;
         }
     }
