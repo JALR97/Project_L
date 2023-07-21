@@ -12,6 +12,7 @@ public class PuzzleManager : MonoBehaviour
     //**    ---Components---    **//
     //  [[ set in editor ]] 
     [SerializeField] private GameObject puzzleCables;
+    //[SerializeField] private GameObject D&Dpuzzle;
     [SerializeField] private Transform puzzleArea;
 
     //**    ---Variables---    **//
