@@ -6,6 +6,10 @@ public class BotellaManager : MonoBehaviour
 {
     [SerializeField] private Image[] liq;
 
+    private void Start()
+    {
+        reiniciarImage();
+    }
     public Image[] getImage()
     {
         return liq;

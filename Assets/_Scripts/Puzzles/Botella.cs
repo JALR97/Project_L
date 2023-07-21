@@ -15,7 +15,7 @@ public class Botella : MonoBehaviour
     private int posicionVacia;
     private int posicionOcupada;
     //**    ---Properties---    **//
-    public float elevacionBotella;
+
 
     //**    ---Functions---    **//
     void Start()
@@ -31,7 +31,6 @@ public class Botella : MonoBehaviour
             for (int i = 0; i < Liquids.Length; i++)
             {
                 botellaTempScript.putImage(Liquids[i], i);
-                Debug.Log(botellaTempScript.getImage()[i].color + "ha");
             }
         }
         else
@@ -42,12 +41,16 @@ public class Botella : MonoBehaviour
 
             posicionVacia = PosicionLibre(Liquids);
             posicionOcupada= PosicionOcupada(botellaTempLiquid);
-            Debug.Log(posicionVacia);
             int posPosterior = posicionVacia == 3 ? 0 : 1;
+            Debug.Log(botellaTempLiquid[posicionOcupada].color);
+            Debug.Log(Liquids[posicionVacia + posPosterior].color);
+            Debug.Log(posPosterior);
             if (posicionVacia != -1)
             {
-                if (posicionVacia == Liquids.Length - 1 || Liquids[posicionVacia + posPosterior].color != botellaTempLiquid[posicionOcupada].color)
+
+                if (posicionVacia == Liquids.Length - 1 || compararRGBA(Liquids[posicionVacia + posPosterior].color, botellaTempLiquid[posicionOcupada].color) && !(Liquids[posicionVacia + posPosterior] == botellaTempLiquid[posicionOcupada]))
                 {
+                    Debug.Log("entro");
                     LiquidTemp = botellaTempLiquid[posicionOcupada];
                     Liquids[posicionVacia].color = LiquidTemp.color;
                     Color nuevoColor = LiquidTemp.color;
@@ -63,6 +66,21 @@ public class Botella : MonoBehaviour
         }
 
     }
+
+    private bool compararRGBA(Color color1, Color color2) { 
+        if ((int) (color1.r *10) == (int) (color2.r * 10) &&
+            (int)(color1.g * 10) == (int)(color2.g * 10) &&
+            (int)(color1.b * 10) == (int)(color2.b * 10) &&
+            color1.a == color2.a)
+        {
+
+            return true;
+        }
+
+
+        return false;
+    }
+
     private int PosicionOcupada(Image[] a)
     {
         int posicion_ocupada = -1;
