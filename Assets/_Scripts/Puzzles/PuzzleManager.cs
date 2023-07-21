@@ -26,7 +26,7 @@ public class PuzzleManager : MonoBehaviour
         GameManager.OnGameStateChange += StateChange;
         gameObject.SetActive(false);
     }
-    
+
     private void OnDestroy() {
         GameManager.OnGameStateChange -= StateChange;
     }

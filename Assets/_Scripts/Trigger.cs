@@ -43,7 +43,7 @@ public class Trigger : MonoBehaviour, IInteractable
                 GameManager.Instance.SceneChange("yggdrasil");
                 break;
             case Type.DAD:
-                GameManager.Instance.GameOver();
+                GameManager.Instance.GameOverUI();
                 break;
         }
     }

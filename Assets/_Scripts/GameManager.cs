@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
     private int totalCapys = 15;
 
     //**    ---Properties---    **//
-
+    public int PlayerSpawn = 0;
 
     //**    ---Functions---    **//
     public void LoadCollectables() {
@@ -91,7 +91,10 @@ public class GameManager : MonoBehaviour {
     }
     
     public void Endgame() {
+        gameoverUI.SetActive(false);
+        Time.timeScale = 1;
         SceneChange("menu");
+        SwitchState(GameState.MainMenu);
         Reset();
     }
 
@@ -99,6 +102,7 @@ public class GameManager : MonoBehaviour {
         foundCapys = new List<LostCapy.CapyID>();
         collected = new List<int>();
         PrevScene = 0;
+        PlayerSpawn = 0;
     }
 
     public void CollectableTaken(int id) {
@@ -153,59 +157,64 @@ public class GameManager : MonoBehaviour {
         OnGameStateChange?.Invoke(newState);
     }
 
-    public void GameOver() {
+    public void GameOverUI() {
         if (State != GameState.GameOver) {
             int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
-            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles.Count} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);
             Time.timeScale = 0;
         }
-
         else {
-
             gameoverUI.SetActive(false);
-            SwitchState(PrevState);
+            SwitchState(GameState.Exploring);
             Time.timeScale = 1;
         }
     }
 
-    private IEnumerator LoadAsync(string scene) {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-
-        if (scene == "Yggdrasil") {
-            if (PrevScene == 0) {
-                mainMenuUI.SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").transform.position =
-                    GameObject.FindGameObjectWithTag("STPoint").transform.position;
-                
-            }
-            else {
-                GameObject.FindGameObjectWithTag("Player").transform.position =
-                    GameObject.FindGameObjectWithTag("HoPoint").transform.position;
-            }
-        }
-    }
+    // private IEnumerator LoadAsync(string scene) {
+    //     AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+    //
+    //     // Wait until the asynchronous scene fully loads
+    //     while (!asyncLoad.isDone)
+    //     {
+    //         yield return null;
+    //     }
+    //
+    //     if (scene == "Yggdrasil") {
+    //         if (PrevScene == 0) {
+    //             mainMenuUI.SetActive(false);
+    //             GameObject.FindGameObjectWithTag("Player").transform.position =
+    //                 
+    //         }
+    //         else {
+    //             GameObject.FindGameObjectWithTag("Player").transform.position =
+    //                 GameObject.FindGameObjectWithTag("HoPoint").transform.position;
+    //         }
+    //     }
+    // }
     
     public void SceneChange(string scene) {
         switch (scene) {
             case "yggdrasil":
-                LoadAsync("Yggdrasil");
+                SceneManager.LoadScene(1);
+                if (PrevScene == 0) {
+                    PlayerSpawn = 0;
+                    SwitchState(GameState.Exploring);
+                }
+                else {
+                    PlayerSpawn = 1;
+                }
                 break;
             case "casa":
                 SceneManager.LoadScene(2);
+                PlayerSpawn = -1;
                 PrevScene = 1;
                 break;
             case "menu":
                 SceneManager.LoadScene(0);
-                PrevScene = 1;
+                PrevScene = 0;
                 ShowMainMenu();
                 break;
         }
@@ -214,6 +223,12 @@ public class GameManager : MonoBehaviour {
     public void CloseGame() {
         Application.Quit();
     }
+
+    public void HideUI() {
+        mainMenuUI.SetActive(false);
+        creditsUI.SetActive(false);
+    }
+    
     public void ShowCredits() {
         PrevState = Instance.State;
         Instance.State = GameState.Credits;
