@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -17,6 +18,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private GameObject[] puzzle;
     [SerializeField] private Transform puzzleArea;
     [SerializeField] private VolumeProfile _normalProfile;
+    [SerializeField] private TMP_Text title;
 
     //**    ---Variables---    **//
     private Puzzle _currentPuzzle;
@@ -43,13 +45,16 @@ public class PuzzleManager : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         _currentPuzzle = puzzle;
         puzzleGameObject = Instantiate(FetchPuzzle(puzzle), puzzleArea);
+        
         ///
         //puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
         switch (puzzle) {
             case Puzzle.CABLES:
+                title.text = "Restaura la electricidad - conecta los cables";
                 puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
                 break;
             case Puzzle.LIQUIDSORT:
+                title.text = "Separa las pinturas - ordena los colores";
                 puzzleGameObject.GetComponent<PuzzleLiquidSort>().setManager(gameObject);
                 break;
         }

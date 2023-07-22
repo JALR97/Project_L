@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour {
     public void GameOverUI() {
         if (State != GameState.GameOver) {
             int collects = GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
-            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles.Count} / {totalPuzzles}\n\nMcGuffins Encontrados: {collected.Count} / {collects}";
+            string newStats = $"Capybaras encontrados: {foundCapys.Count + defaultCapys.Count} / {totalCapys}\n\nPuzzles resueltos: {completedPuzzles.Count} / {totalPuzzles}\n\nChampiñones Encontrados: {collected.Count} / {collects}";
             gameoverUI.transform.GetChild(0).GetComponent<TMP_Text>().text = newStats;
             gameoverUI.SetActive(true);
             SwitchState(GameState.GameOver);

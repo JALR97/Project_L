@@ -48,9 +48,14 @@ MonoBehaviour:
   PrevState: 0
   State: 0
   _puzzleManager: {fileID: 0}
+  _soundManager: {fileID: 0}
   pauseUI: {fileID: 0}
   gameoverUI: {fileID: 0}
   UIContainer: {fileID: 0}
+  DialogueBox: {fileID: 0}
   creditsUI: {fileID: 0}
   mainMenuUI: {fileID: 0}
+  ControlesUI: {fileID: 0}
+  ObjetivosUI: {fileID: 0}
   hint_UI: {fileID: 0}
+  PlayerSpawn: 0
