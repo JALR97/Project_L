@@ -49,7 +49,10 @@ public class LostCapy : MonoBehaviour, IInteractable
             GameManager.Instance.CapyFound(id);
         }
         else {
-            GameManager.Instance.Prompt(Repeat);
+            if (id == CapyID.ARTIST && !GameManager.Instance.hasBeenSolved(PuzzleManager.Puzzle.LIQUIDSORT)) {
+                GameManager.Instance.TriggeredPuzzle(PuzzleManager.Puzzle.LIQUIDSORT);
+            }else
+                GameManager.Instance.Prompt(Repeat);
         }
     }
     

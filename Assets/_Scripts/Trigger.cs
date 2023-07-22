@@ -10,8 +10,7 @@ public class Trigger : MonoBehaviour, IInteractable
         CABLES,
         CASA,
         Yggdrasil,
-        DAD,
-        LIQUIDSORT
+        DAD
     }
     //**    ---Components---    **//
     [SerializeField] private Type _type;
@@ -42,12 +41,6 @@ public class Trigger : MonoBehaviour, IInteractable
                 GameManager.Instance.hint_UI.SetActive(false);
                 GameManager.Instance.PrevScene = 2;
                 GameManager.Instance.SceneChange("yggdrasil");
-                break;
-            case Type.LIQUIDSORT:
-                if (!GameManager.Instance.hasBeenSolved(PuzzleManager.Puzzle.LIQUIDSORT))
-                {
-                    GameManager.Instance.TriggeredPuzzle(PuzzleManager.Puzzle.LIQUIDSORT);
-                }
                 break;
             case Type.DAD:
                 if (flag) {

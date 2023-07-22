@@ -43,8 +43,13 @@ public class PuzzleManager : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         _currentPuzzle = puzzle;
         puzzleGameObject = Instantiate(FetchPuzzle(puzzle), puzzleArea);
+        ///
+        //puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
         switch (puzzle) {
             case Puzzle.CABLES:
+                puzzleGameObject.GetComponent<PuzzleCables>().setManager(gameObject);
+                break;
+            case Puzzle.LIQUIDSORT:
                 puzzleGameObject.GetComponent<PuzzleLiquidSort>().setManager(gameObject);
                 break;
         }

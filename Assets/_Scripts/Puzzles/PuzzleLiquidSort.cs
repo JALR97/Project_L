@@ -14,13 +14,11 @@ public class PuzzleLiquidSort : MonoBehaviour
 
 
     //**    ---Functions---    **//
-    public void setManager(GameObject manager)
-    {
+    public void setManager(GameObject manager) {
         pzm = manager.GetComponent<PuzzleManager>();
     }
 
-    public void Completed()
-    {
+    public void Completed() {
         pzm.Completed();
     }
 
