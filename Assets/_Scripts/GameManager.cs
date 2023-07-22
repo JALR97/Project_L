@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     public enum GameState {
         MainMenu,
         Credits,
+        Controles,
+        Objetivos,
         Exploring,
         Puzzle,
         Paused,
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
+    [SerializeField] private GameObject ControlesUI;
+    [SerializeField] private GameObject ObjetivosUI;
 
     public GameObject hint_UI;
     private List<int> defaultCapys = new List<int>();
@@ -163,6 +167,10 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.Credits:
                 break;
+            case GameState.Controles:
+                break;
+            case GameState.Objetivos:
+                break;
         }
         OnGameStateChange?.Invoke(newState);
     }
@@ -247,7 +255,44 @@ public class GameManager : MonoBehaviour {
         mainMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
-    
+
+    public void ShowControlesFromMenu()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.Controles;
+        ControlesUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+    public void ShowObjetivos()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.Objetivos;
+        ObjetivosUI.SetActive(true);
+        ControlesUI.SetActive(false);
+    }
+    public void ShowMainMenuFromObjetivos()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.MainMenu;
+        ObjetivosUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
+    public void ShowCreditosFromObjetivos()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.MainMenu;
+        ObjetivosUI.SetActive(false);
+        creditsUI.SetActive(true);
+    }
+    public void ShowMainMenuFromControles()
+    {
+        PrevState = Instance.State;
+        Instance.State = GameState.MainMenu;
+        ControlesUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
     public void ShowMainMenu() {
         PrevState = Instance.State;
         Instance.State = GameState.MainMenu;
