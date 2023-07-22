@@ -42,7 +42,7 @@ public class Wire : MonoBehaviour
 
         rectT.localEulerAngles = new Vector3(0, 0, angle);
         
-        rectT.sizeDelta = new Vector2 (direction.magnitude, 10);
+        rectT.sizeDelta = new Vector2 (direction.magnitude/2, 10);
     }
     
     private void Update() {

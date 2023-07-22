@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject UIContainer;
     [SerializeField] private DialogueUI DialogueBox;
+    [SerializeField] private GameObject PolaroidUI;
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -186,6 +187,7 @@ public class GameManager : MonoBehaviour {
         }
         else {
             gameoverUI.SetActive(false);
+            PolaroidUI.SetActive(false);
             SwitchState(GameState.Exploring);
             Time.timeScale = 1;
         }
@@ -313,4 +315,12 @@ public class GameManager : MonoBehaviour {
         DialogueBox.Prompt();
     }
 
+    public bool Completionist() {
+        return foundCapys.Count + defaultCapys.Count == totalCapys && completedPuzzles.Count == totalPuzzles && collected.Count == GameObject.FindGameObjectWithTag("Collectable").transform.childCount;
+    }
+
+    public void Polaroid() {
+        GameOverUI();
+        PolaroidUI.SetActive(true);
+    }
 }

@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviour
     
     //**    ---Components---    **//
     // [SerializeField] private PlayerController _playerController;
-    [SerializeField] private GameObject player;
     [SerializeField] private Animator anim;
     [SerializeField] private LayerMask terrain;
     
@@ -100,7 +99,8 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance.PlayerSpawn == -1) {
             //Nothing
         }else if (GameManager.Instance.PlayerSpawn == 0) {
-            transform.position = GameObject.FindGameObjectWithTag("STPoint").transform.position;    
+            transform.position = GameObject.FindGameObjectWithTag("STPoint").transform.position; 
+            GameManager.Instance.Prompt("Encuentra a los capybaras de la familia! Recolecta los champiñones");
         }
         else {
             transform.position = GameObject.FindGameObjectWithTag("HoPoint").transform.position;

@@ -43,13 +43,18 @@ public class Trigger : MonoBehaviour, IInteractable
                 GameManager.Instance.SceneChange("yggdrasil");
                 break;
             case Type.DAD:
-                if (flag) {
-                    GameManager.Instance.GameOverUI();
-                    flag = false;
-                    break;    
-                }else {
-                    GameManager.Instance.Prompt("Quieres ya dejar de jugar y llamar a los demas?");
-                    flag = true;
+                if (GameManager.Instance.Completionist()) {
+                    GameManager.Instance.Polaroid();
+                    break;
+                }
+                else{
+                    if (flag) {
+                        GameManager.Instance.GameOverUI();
+                        flag = false;
+                    }else {
+                        GameManager.Instance.Prompt("Quieres ya dejar de jugar y llamar a los demas?");
+                        flag = true;
+                    }
                     break;
                 }                
         }
