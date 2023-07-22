@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     private List<LostCapy.CapyID> foundCapys = new List<LostCapy.CapyID>();
     private List<int> collected = new List<int>();
     private List<PuzzleManager.Puzzle> completedPuzzles = new List<PuzzleManager.Puzzle>();
-    private int totalPuzzles = 1;
+    private int totalPuzzles = 2;
     private int totalCapys = 15;
 
     //**    ---Properties---    **//
@@ -278,12 +278,12 @@ public class GameManager : MonoBehaviour {
         mainMenuUI.SetActive(true);
     }
 
-    public void ShowCreditosFromObjetivos()
+    public void ShowControlesFromObjetivos()
     {
         PrevState = Instance.State;
         Instance.State = GameState.MainMenu;
         ObjetivosUI.SetActive(false);
-        creditsUI.SetActive(true);
+        ControlesUI.SetActive(true);
     }
     public void ShowMainMenuFromControles()
     {

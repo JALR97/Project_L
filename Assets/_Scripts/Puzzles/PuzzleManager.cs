@@ -14,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
     }
     //**    ---Components---    **//
     //  [[ set in editor ]] 
-    [SerializeField] private GameObject puzzle;
+    [SerializeField] private GameObject[] puzzle;
     [SerializeField] private Transform puzzleArea;
     [SerializeField] private VolumeProfile _normalProfile;
 
@@ -78,9 +78,9 @@ public class PuzzleManager : MonoBehaviour
     private GameObject FetchPuzzle(Puzzle puzzleId) {
         switch (puzzleId) {
             case Puzzle.CABLES:
-                return puzzle;
+                return puzzle[0];
             case Puzzle.LIQUIDSORT:
-                return puzzle;
+                return puzzle[1];
         }
         
         return null;
