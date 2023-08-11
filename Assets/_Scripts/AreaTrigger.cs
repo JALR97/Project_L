@@ -6,7 +6,10 @@ public class AreaTrigger : MonoBehaviour {
     //-----------------//Data structures//-----------------//
     //enums
     [SerializeField] private enum Type {
-        MostrarUI,
+        EntrarCasa,
+        JumpUI,
+        DadUI,
+        StartingUI
     }
     
     //-----------------//Components//-----------------//
@@ -32,13 +35,35 @@ public class AreaTrigger : MonoBehaviour {
     //-----------------//Functions//-----------------//
     //Built-in
     private void Start() {
-        UI = GameManager.Instance.hint_UI;
+        switch (type) {
+            case Type.EntrarCasa:
+                UI = GameManager.Instance.hint_UI;
+                break;
+            case Type.JumpUI:
+                UI = GameManager.Instance.jumphint_UI;
+                break;
+            case Type.DadUI:
+                UI = GameManager.Instance.DadHint_UI;
+                break;
+            case Type.StartingUI:
+                UI = GameManager.Instance.Walkhint_UI;
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (UI == null) {
+            return;
+        }
         if (other.CompareTag("Player")) {
             switch (type) {
-                case Type.MostrarUI:
+                case Type.EntrarCasa:
+                    UI.SetActive(true);
+                    break;
+                case Type.JumpUI:
+                    UI.SetActive(true);
+                    break;
+                case Type.DadUI:
                     UI.SetActive(true);
                     break;
             }
@@ -46,10 +71,25 @@ public class AreaTrigger : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other) {
+        if (UI == null) {
+            return;
+        }
         if (other.CompareTag("Player")) {
             switch (type) {
-                case Type.MostrarUI:
+                case Type.EntrarCasa:
                     UI.SetActive(false);
+                    break;
+                case Type.JumpUI:
+                    UI.SetActive(false);
+                    Destroy(gameObject);
+                    break;
+                case Type.DadUI:
+                    UI.SetActive(false);
+                    Destroy(gameObject);
+                    break;
+                case Type.StartingUI:
+                    UI.SetActive(false);
+                    Destroy(gameObject);
                     break;
             }
         }

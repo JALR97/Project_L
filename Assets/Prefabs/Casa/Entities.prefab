@@ -93,6 +93,21 @@ PrefabInstance:
       propertyPath: defId
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Casi te gano
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Oh sin la oscuridad ya no es divertido
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder

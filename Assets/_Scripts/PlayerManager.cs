@@ -101,6 +101,7 @@ public class PlayerManager : MonoBehaviour
         }else if (GameManager.Instance.PlayerSpawn == 0) {
             transform.position = GameObject.FindGameObjectWithTag("STPoint").transform.position; 
             GameManager.Instance.Prompt("Encuentra a los capybaras de la familia! Recolecta los champiñones");
+            GameManager.Instance.Walkhint_UI.SetActive(true);
         }
         else {
             transform.position = GameObject.FindGameObjectWithTag("HoPoint").transform.position;

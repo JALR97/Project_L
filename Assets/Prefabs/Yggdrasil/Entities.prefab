@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.05
+      value: 42.85
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -366,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.96
+      value: -10.22
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -610,6 +610,26 @@ PrefabInstance:
       propertyPath: defId
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: A nadie le dio tiempo, quedo bastante vacia
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Oh! no logre llegar a la playa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: A nadie le dio tiempo, quedo bastante vacia
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -628,22 +648,22 @@ PrefabInstance:
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.09407
+      value: 45.39
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.626
+      value: 0.278
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.23509
+      value: -10.495
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.06244097
+      value: 0.14974128
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -653,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.99804866
+      value: 0.9887252
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -668,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 187.16
+      value: 162.776
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -2295,6 +2315,21 @@ PrefabInstance:
       propertyPath: defId
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: No te caigas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: "Intentaras subir la monta\xF1a?"
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -2851,7 +2886,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.22
+      value: 40.78
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -2861,7 +2896,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.1
+      value: -10.72
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -3498,7 +3533,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.01
+      value: 32.39
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -3508,7 +3543,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.37
+      value: -25.55
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -3578,6 +3613,21 @@ PrefabInstance:
         type: 3}
       propertyPath: defId
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Hola otra vez
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Me encontraste!
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -4048,6 +4098,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3051152559919924519}
     m_Modifications:
+    - target: {fileID: 2209677276957865752, guid: d18410206394c134bb2a57fc6787ffea,
+        type: 3}
+      propertyPath: Repeat
+      value: No se de que copyright me hablas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209677276957865752, guid: d18410206394c134bb2a57fc6787ffea,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Hobbie dice, salta!
+      objectReference: {fileID: 0}
     - target: {fileID: 4581656445641182284, guid: d18410206394c134bb2a57fc6787ffea,
         type: 3}
       propertyPath: m_Name
@@ -4557,6 +4617,26 @@ PrefabInstance:
       propertyPath: defId
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Meh, es divertido jugar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: "No es un poco extra\xF1o el vacio que hay alli?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Meh, es divertido jugar
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -4918,6 +4998,21 @@ PrefabInstance:
       propertyPath: defId
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Cuidado al bajar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Me viste! Me costo subir aqui
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -5001,6 +5096,26 @@ PrefabInstance:
         type: 3}
       propertyPath: defId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: No todos pueden saltar hasta aqui
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Buenos movimientos!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: No todos pueden saltar hasta aqui
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -5173,7 +5288,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.37
+      value: 36.75
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -5183,7 +5298,7 @@ PrefabInstance:
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.46
+      value: -16.32
       objectReference: {fileID: 0}
     - target: {fileID: 7119843797319055903, guid: 89703ebde6ad4d841a3a8b8f4055c696,
         type: 3}
@@ -5917,6 +6032,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6101176928475197472, guid: e21f62ec6e9467c4f9590a1e65f89d0d,
+        type: 3}
+      propertyPath: Repeat
+      value: Que quieres? No te dire donde estan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101176928475197472, guid: e21f62ec6e9467c4f9590a1e65f89d0d,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: A cuantos has encontrado?
+      objectReference: {fileID: 0}
     - target: {fileID: 8472596441310923636, guid: e21f62ec6e9467c4f9590a1e65f89d0d,
         type: 3}
       propertyPath: m_Name
@@ -6124,6 +6249,26 @@ PrefabInstance:
       propertyPath: defId
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Ah cierto, me encontraste
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: "Hey tu hermana es un poco extra\xF1a"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Ah cierto, me encontraste
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -6278,12 +6423,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3781084045004438364, guid: 5cbc4c6d63f081946bad51d1a556edb8,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 8446e627591536e45b5e7fde1fe6882d,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6312,6 +6451,21 @@ PrefabInstance:
         type: 3}
       propertyPath: defId
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Hola otra vez
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Pense que el arbol me escondia bien
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -6817,6 +6971,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capy5-Default1
       objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Te aseguro nadie se escondio mejor que yo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Oh realmente pense que no me encontrarias
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Te aseguro nadie se escondio mejor que yo
+      objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
       propertyPath: m_RootOrder
@@ -6900,6 +7074,21 @@ PrefabInstance:
         type: 3}
       propertyPath: defId
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Estamos bien alto
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: Llegaste! Mira la vista desde aqui
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}
@@ -7168,6 +7357,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capy2-Artist
       objectReference: {fileID: 0}
+    - target: {fileID: 2513937503128560782, guid: ff5db71ceb0e36642b607994950bd24f,
+        type: 3}
+      propertyPath: Dialogues.Array.data[1]
+      value: Podrias resolver este puzzle?
+      objectReference: {fileID: 0}
     - target: {fileID: 8846729762655450607, guid: ff5db71ceb0e36642b607994950bd24f,
         type: 3}
       propertyPath: m_RootOrder
@@ -7251,6 +7445,21 @@ PrefabInstance:
         type: 3}
       propertyPath: defId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Repeat
+      value: Hola otra vez
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596324941671276846, guid: cf357fe081d931c41b47e461daa74863,
+        type: 3}
+      propertyPath: Dialogues.Array.data[0]
+      value: No puedes negar que es buen escondite
       objectReference: {fileID: 0}
     - target: {fileID: 7624065805990703183, guid: cf357fe081d931c41b47e461daa74863,
         type: 3}

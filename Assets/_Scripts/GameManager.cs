@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject UIContainer;
     [SerializeField] private DialogueUI DialogueBox;
     [SerializeField] private GameObject PolaroidUI;
+    
+    [SerializeField] private UpdatableUI CapyUI;
+    [SerializeField] private UpdatableUI MushUI;
 
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -39,6 +42,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject ObjetivosUI;
 
     public GameObject hint_UI;
+    public GameObject DadHint_UI;
+    public GameObject jumphint_UI;
+    public GameObject Walkhint_UI;
+    
     private List<int> defaultCapys = new List<int>();
 
     //  [[ set in Start() ]] 
@@ -116,15 +123,18 @@ public class GameManager : MonoBehaviour {
     public void CollectableTaken(int id) {
         _soundManager.PlaySimple(SoundManager.clipID.COLLECTABLE);
         collected.Add(id);
+        MushUI.UpdateUI(collected.Count); 
     }
     
     public void CapyFound(LostCapy.CapyID capy) {
         _soundManager.PlaySimple(SoundManager.clipID.CAPYFOUND);
         foundCapys.Add(capy);
+        CapyUI.UpdateUI(foundCapys.Count + defaultCapys.Count);
     }
     public void CapyFound(int capy) {
         _soundManager.PlaySimple(SoundManager.clipID.CAPYFOUND);
         defaultCapys.Add(capy);
+        CapyUI.UpdateUI(foundCapys.Count + defaultCapys.Count);
     }
     
     public bool hasCapyBeenFound(LostCapy.CapyID capy) {

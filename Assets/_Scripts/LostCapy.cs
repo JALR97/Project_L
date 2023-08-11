@@ -40,7 +40,7 @@ public class LostCapy : MonoBehaviour, IInteractable
                 GameManager.Instance.CapyFound(defId);
             }
             else {
-                GameManager.Instance.Prompt("Hola otra vez");
+                GameManager.Instance.Prompt(Repeat);
             }
         }else if (!GameManager.Instance.hasCapyBeenFound(id)) {
             WaveAnim();
